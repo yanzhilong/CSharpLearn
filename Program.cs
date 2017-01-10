@@ -14,6 +14,7 @@ namespace ConsoleLearn
             nameSpace();
             variate();
             expression();
+			String();
         }
 
 
@@ -233,6 +234,184 @@ namespace ConsoleLearn
             Type mytype = typeof(int);
             Console.WriteLine("类型{0}",mytype);
         }
+
+		
+		/// <summary>
+        /// 字符串与字符串
+        /// </summary>
+		static void String(){
+
+			//字符及常用方法
+			char ch1 = 'L';
+			char ch2 = '1';
+
+			char a = 'a';
+			char b = '8';
+			char c = 'L';
+			char d = '.';
+			char e = '|';
+			char f = ' ';
+
+			Console.WriteLine("{0}{1}字母",a,Char.IsLetter(a) ? "是" : "不是");
+			Console.WriteLine("{0}{1}数字",b,Char.IsDigit(b) ? "是" : "不是");
+			Console.WriteLine("{0}{1}字母或数字",c,Char.IsLetterOrDigit(c) ? "是" : "不是");
+			Console.WriteLine("{0}{1}小写字母",a,Char.IsLower(a) ? "是" : "不是");
+			Console.WriteLine("{0}{1}大写字母",c,Char.IsUpper(c) ? "是" : "不是");
+			Console.WriteLine("{0}{1}标点符号",d,Char.IsPunctuatin(d) ? "是" : "不是");
+			Console.WriteLine("{0}{1}分隔符",e,Char.isSeparator(e) ? "是" : "不是");
+			Console.WriteLine("{0}{1}字母",f,Char.IsWhiteSpace(f) ? "是" : "不是");
+
+			//转义字符
+			char M = '\'';  //值为单引号
+			char M1 = '\n';	//回车换行
+			char M1 = '\t';	//下一个字表位置
+			char M1 = '\b';	//退格
+			char M1 = '\r';	//回车
+			
+			Console.WriteLine("hello world");
+			Console.Write("hello world\n");
+
+			//String 类，string类型
+			string Str1 = "hello world";
+			char Str2 = Str1[1];
+			char Str3 = Str1[2];
+			Console.WriteLine("{0}的第二个字符是{1}",Str1,Str2);
+			Console.WriteLine("{0}的第三个字符是{1}",Str1,Str3);
+
+			//字符串的比较
+			//Compare
+			Str1 = "abcde";
+			Str2 = "abcdf";
+			Console.WriteLine("{0}和{1}比较的结果是:",Str1,Str2,String.Compare(Str1,Str2));
+			Console.WriteLine("{0}和{1}比较的结果是:",Str1,Str1,String.Compare(Str1,Str1));
+			Console.WriteLine("{0}和{1}比较的结果是:",Str2,Str1,String.Compare(Str2,Str1));
+			//-1,0,1
+
+			Console.WriteLine("{0}和{1}比较的结果是:",Str1,Str2,Str1.CompareTo(Str2));
+			Console.WriteLine("{0}和{1}比较的结果是:",Str1,Str1,Str1.CompareTo(Str1));
+			Console.WriteLine("{0}和{1}比较的结果是:",Str2,Str1,Str2.CompareTo(Str1));
+
+			//Equals
+			Str1 = "hello world";
+			Str2 = "hello world!";
+			Console.WriteLine("{0}和{1}{2}",Str1,Str2,Str1.Equals(Str2) ? "相等" : "不等");
+			Console.WriteLine("{0}和{1}{2}",Str1,Str2,String.Equals(Str1,Str2) ? "相等" : "不等");
+
+			//格式化字符串
+			string StrA = "hello ";
+			string StrB = "world";
+			string StrAB = String.Format("{0},{1}!!!",StrA,StrB);
+			Console.WriteLine(StrAB);
+
+			//格式化日期
+			//d YYYY-MM-dd
+			//D YYYY年MM月dd日
+			//t hh:mm
+			//T hh:mm:ss
+			//f YYYY年MM月dd日 hh:mm
+			//F YYYY年MM月dd日 hh:mm:ss
+			//g YYYY-MM-dd hh:mm
+			//G YYYY-MM-dd hh:mm:ss
+			//M或m MM月dd日
+			//Y或y YYYY年MM月
+			
+			DateTime dt = DateTime.Now;
+			string strB = String.Format("{0:D}",dt);
+			Console.WriteLine(strB);
+
+			//字符串的截取
+			//public string Substring(int startIndex,int length);
+			StrA = "hello world";
+			StrB = StrA.Substring(1,4); //从索引1开始，截取4位
+			Console.WriteLine(StrB);
+			//注：当 length大于字符串的长度的时候，将截取之后的所有字符
+
+			//分割字符串
+			//public string[] Split(params char[] separator); separator包含分割符
+			StrA = "用^一生#下载,你";
+			char[] splitstrings = new String[100];
+			splitstrings = StrA.Split(separator);
+			for(int i = 0; i < splitstrings.Length;i++){
+				Console.WriteLine("item{0}:{1}",i,splitstrings[i]);
+			}
+			//item0:用
+			//item1:一生
+			//item2:下载
+			//item3:你
+
+			//插入和填充字符串
+			//public string Insert(int startIndex,string value);
+			// startIndex,要插入的位置,value，要插入的字符
+			string str1 = "下载";
+			string str2;
+			str2 = str1.Insert(0,"用一生");
+			string str3 = str2.Insert(5,"你");
+			Console.WriteLine(str3);
+			
+			//result:用一生下载你
+			string str4 = str2.Insert(str2.Length,"你");
+			
+			//填充字符串
+			//public string PadLeft(int totalWidth,char paddingChar);
+			//toalWidth:填充后的字符长度
+			//paddingChar:指定要填充的字符，如果省略，则填充空格
+			str1 = "*^_^*";
+			str2 = str1.PadLeft(7,'(');
+			str3 = str2.PadRight(8,')');
+			Console.WriteLine("补充字符串之前:" + str1);
+			Console.WriteLine("补充字符串之后:" + str3);
+
+			//删除字符串
+			//public String Remove(int startIndex);//从指定位置开始删除后面的全部
+			//public String Remove(int startIndex,int count);
+			//startIndex:用于指定开始删除的位置
+			//count:要删除的字符数量
+			str1 = "用一生下载你";
+			str2 = str1.Remove(3);
+			Console.WriteLine(str2);//输出:用一生
+
+			str1 = "芸烨湘枫";
+			str2 = str1.Remove(1,2);
+			Console.WriteLine(str2);
+			//输出:芸枫
+
+			//复制字符串
+			//public static string Copy(string str);
+			//str:要复制的字符串
+			string stra = "芸烨湘枫";
+			string strb = String.Copy(stra);
+			Console.WriteLine(strb);
+
+			//public void CopyTo(int sourceIndex,char[]destination,int destinationIndex,int coune);
+			//sourceIndex:需要复制字符的起始位置
+			//destination:目标字符数组
+			//destinationIndex:目标数组开始存放的位置
+			//count:要复制的字符个数
+			str1 = "用一生下载你";
+			char[] str = new char[100];
+			//将str1从1开始的4个字符串复制到字符数组str中
+			str1.CopyTo(1,str,0,4);
+			Console.WriteLine(str);
+			//输出:一生下载
+
+			//替换字符串
+			//public string Replace(char Ochar,char NChar);
+			//public string Replace(string OValue,string NValue)
+			//Ochar 等替换的字符
+			//NChat 替换后的字符
+			//OValue 待替换的字符串
+			//NValue 替换后的字符串
+			string a = "one world,one dream";
+			string b = a.Replace(',','*');
+			Console.WriteLine(b);
+			
+			string c = a.Replace("on world","One World");
+			Console.WriteLine(c);
+
+			//StringBuilder类的使用
+
+		}
+
 
     }
 }
