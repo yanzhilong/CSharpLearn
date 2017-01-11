@@ -887,37 +887,41 @@ namespace ConsoleLearn
             structure = new Structure(20,30);
             Console.WriteLine("矩形的面积为{0}", structure.Area());
 
-			//类的构造方法
-			Program program = new Program();
-			console.WriteLine("结果:" + program.z);
+            //类的构造方法
+            ProgramBase programBase = new ProgramBase();
+
+            Console.WriteLine("结果:" + programBase.z);
 
 			//类的声明和实例化
-			MyClass myClass = new MyClass();
-			myClass.X = 3;
-			myClass.Y = 5;
-			myClass.Z = myClass.X + myClass.Y;
-			Console.WriteLine(myClass.Z);
-			int z = myClass.Add();
-			
-			//继承类的使用
-			MyClass myClassbase = new MyClass();
-			MyClass1 myClass1 = new MyClass1();
-			myClassbase.X = 3;
-			myClassbase.Y = 5;
-			myClass1.X = 3;
-			myClass1.Y = 5;
-			myClass1.J = 7;
-			Console.WriteLine(myClassbase.Add());
-			Console.WriteLine(myClass1.Add());
-			Console.WriteLine(myClass1.Add1());
+			FatherClass fatherClass = new FatherClass();
+            fatherClass.X = 3;
+            fatherClass.Y = 5;
+            fatherClass.Z = fatherClass.X + fatherClass.Y;
+			Console.WriteLine(fatherClass.Z);
+            Console.WriteLine(fatherClass.Add());
+            
+            //继承类的使用
+            Console.WriteLine("继承类的使用");
+            FatherClass fatherClass1 = new FatherClass();
+			ChildClass childClass = new ChildClass();
+            fatherClass1.X = 3;
+            fatherClass1.Y = 5;
+            childClass.X = 3;
+            childClass.Y = 5;
+            childClass.J = 7;
+			Console.WriteLine(fatherClass1.Add());//父类调用父类的方法
+			Console.WriteLine(childClass.Add());//子类调用父类的方法
+			Console.WriteLine(childClass.ChildAdd());//子类调用子类的方法
 
-			//类的继承
-			MyClass12 myClass12 = new MyClass12();
-			MyClass11 myClass11 = (MyClass11)myClass2;
-			myClass11.X = 3;
-			myClass11.Y = 5;
-			Console.WriteLine(myClass1.Add());
-			Console.WriteLine(myClass2.Add());
+            //虚拟类的继承
+            Console.WriteLine("虚拟继承类的使用");
+            VirtualChild virtualChild = new VirtualChild();
+            VirtualClass virtualClass = virtualChild;
+            virtualClass.X = 3;
+            virtualClass.Y = 5;
+            Console.WriteLine(virtualClass.Add());//父类的加法
+			Console.WriteLine(virtualChild.Add());
+
         }
 
 
@@ -946,11 +950,11 @@ namespace ConsoleLearn1
 
     }
 
-	 /// <summary>
+	/// <summary>
     /// 类
     /// 有构造函数和析构函数
     /// </summary>
-	class Program
+	public class ProgramBase
 	{
 		public int x = 3;
 		public int y = 5;
@@ -959,12 +963,12 @@ namespace ConsoleLearn1
 		/// <summary>
 		///	构造函数
 		/// </summary>
-		public program(){
+		public ProgramBase(){
 
 			z = x + y;
 		}
 
-		~Program(){
+		~ProgramBase(){
 
 			Console.WriteLine("析构函数自动调用");
 		}
@@ -974,8 +978,8 @@ namespace ConsoleLearn1
 	/// <summary>
 	///	虚拟基类
 	/// </summary>
-	class MyClass11
-	{
+	class VirtualClass
+    {
 		private int x = 0;
 		private int y = 0;
 
@@ -1003,7 +1007,7 @@ namespace ConsoleLearn1
 		/// </summary>
 		public virtual int Add(){
 
-			
+            return X + Y;
 		}
 
 	}
@@ -1011,21 +1015,33 @@ namespace ConsoleLearn1
 	/// <summary>
 	///	子类
 	/// </summary>
-	class MyClass12:MyClass11
-	{
+	class VirtualChild: VirtualClass
+    {
 
-		public overrite int Add(){
-		
-			return 5 + 7;
-		}
-		
+        /// <summary>
+        /// 转换成父类的时候调用的方法也是子类方法
+        /// </summary>
+        /// <returns></returns>
+        //public override int Add()
+        //{
 
-	}
+        //    return 5 + 7;
+        //}
+
+        /// <summary>
+        /// 转换成父类的时候调用的方法是父类方法，相当于是子类自己创建的一个同名方法
+        /// </summary>
+        public new int Add()
+        {
+            return 5 + 7;
+        }
+
+    }
 
 	/// <summary>
 	///	父类
 	/// </summary>
-	class MyClass
+	class FatherClass
 	{
 		private int x = 0;
 		private int y = 0;
@@ -1063,15 +1079,15 @@ namespace ConsoleLearn1
 		/// </summary>
 		public int Add(){
 
-			return x + y;
+			return X + Y;
 		}
 	}
 
 	/// <summary>
 	///	子类继承父类
 	/// </summary>
-	class MyClass1:MyClass
-	{
+	class ChildClass: FatherClass
+    {
 		int j = 0;
 		public int J{
 
@@ -1087,7 +1103,7 @@ namespace ConsoleLearn1
 		/// <summary>
 		///	加法
 		/// </summary>
-		public int Add2(){
+		public int ChildAdd(){
 			
 			return X + Y + J;
 		}
