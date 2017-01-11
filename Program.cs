@@ -879,6 +879,7 @@ namespace ConsoleLearn
         /// </summary>
         static void structure()
         {
+			//结构的使用
             Structure structure;
             structure.width = 10;
             structure.height = 20;
@@ -886,6 +887,37 @@ namespace ConsoleLearn
             structure = new Structure(20,30);
             Console.WriteLine("矩形的面积为{0}", structure.Area());
 
+			//类的构造方法
+			Program program = new Program();
+			console.WriteLine("结果:" + program.z);
+
+			//类的声明和实例化
+			MyClass myClass = new MyClass();
+			myClass.X = 3;
+			myClass.Y = 5;
+			myClass.Z = myClass.X + myClass.Y;
+			Console.WriteLine(myClass.Z);
+			int z = myClass.Add();
+			
+			//继承类的使用
+			MyClass myClassbase = new MyClass();
+			MyClass1 myClass1 = new MyClass1();
+			myClassbase.X = 3;
+			myClassbase.Y = 5;
+			myClass1.X = 3;
+			myClass1.Y = 5;
+			myClass1.J = 7;
+			Console.WriteLine(myClassbase.Add());
+			Console.WriteLine(myClass1.Add());
+			Console.WriteLine(myClass1.Add1());
+
+			//类的继承
+			MyClass12 myClass12 = new MyClass12();
+			MyClass11 myClass11 = (MyClass11)myClass2;
+			myClass11.X = 3;
+			myClass11.Y = 5;
+			Console.WriteLine(myClass1.Add());
+			Console.WriteLine(myClass2.Add());
         }
 
 
@@ -912,9 +944,154 @@ namespace ConsoleLearn1
         public String color; // 颜色 
         private string brand; //厂家
 
-
-
     }
+
+	 /// <summary>
+    /// 类
+    /// 有构造函数和析构函数
+    /// </summary>
+	class Program
+	{
+		public int x = 3;
+		public int y = 5;
+		public int z = 0;
+		
+		/// <summary>
+		///	构造函数
+		/// </summary>
+		public program(){
+
+			z = x + y;
+		}
+
+		~Program(){
+
+			Console.WriteLine("析构函数自动调用");
+		}
+	}
+
+
+	/// <summary>
+	///	虚拟基类
+	/// </summary>
+	class MyClass11
+	{
+		private int x = 0;
+		private int y = 0;
+
+		public int X{
+			get{
+				return x;
+			}
+			set{
+				x = value;
+			}
+		}
+
+		
+		public int Y{
+			get{
+				return y;
+			}
+			set{
+				y = value;
+			}
+		}
+		
+		/// <summary>
+		///	由子类实现
+		/// </summary>
+		public virtual int Add(){
+
+			
+		}
+
+	}
+
+	/// <summary>
+	///	子类
+	/// </summary>
+	class MyClass12:MyClass11
+	{
+
+		public overrite int Add(){
+		
+			return 5 + 7;
+		}
+		
+
+	}
+
+	/// <summary>
+	///	父类
+	/// </summary>
+	class MyClass
+	{
+		private int x = 0;
+		private int y = 0;
+		private int z = 0;
+
+		public int X{
+			get{
+				return x;
+			}
+			set{
+				x = value;
+			}
+		}
+
+		public int Y{
+			get{
+				return y;
+			}
+			set{
+				y = value;
+			}
+		}
+
+		public int Z{
+			get{
+				return z;
+			}
+			set{
+				z = value;
+			}
+		}
+
+		/// <summary>
+		///	加法方法
+		/// </summary>
+		public int Add(){
+
+			return x + y;
+		}
+	}
+
+	/// <summary>
+	///	子类继承父类
+	/// </summary>
+	class MyClass1:MyClass
+	{
+		int j = 0;
+		public int J{
+
+			get{
+				return j;
+			}
+
+			set{
+				j = value;
+			}
+		}
+		
+		/// <summary>
+		///	加法
+		/// </summary>
+		public int Add2(){
+			
+			return X + Y + J;
+		}
+	}
 
     /// <summary>
     /// 结构
