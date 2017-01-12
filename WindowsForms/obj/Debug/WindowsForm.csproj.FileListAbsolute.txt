@@ -10,3 +10,11 @@ D:\Projects\ConsoleLearn\WindowsForms\obj\Debug\WindowsForm.Properties.Resources
 D:\Projects\ConsoleLearn\WindowsForms\obj\Debug\WindowsForm.csproj.GenerateResource.Cache
 D:\Projects\ConsoleLearn\WindowsForms\obj\Debug\WindowsForm.exe
 D:\Projects\ConsoleLearn\WindowsForms\obj\Debug\WindowsForm.pdb
+D:\Projects\CSharpLearn\WindowsForms\bin\Debug\WindowsForm.exe.config
+D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.exe
+D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.pdb
+D:\Projects\CSharpLearn\WindowsForms\bin\Debug\WindowsForm.exe
+D:\Projects\CSharpLearn\WindowsForms\bin\Debug\WindowsForm.pdb
+D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.csprojResolveAssemblyReference.cache
+D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.Properties.Resources.resources
+D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.csproj.GenerateResource.Cache
