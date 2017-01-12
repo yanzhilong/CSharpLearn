@@ -1,0 +1,12 @@
+D:\Projects\ConsoleLearn\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+D:\Projects\ConsoleLearn\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+D:\Projects\ConsoleLearn\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+D:\Projects\ConsoleLearn\WindowsFormsApplication1\bin\Debug\WindowsForm.exe.config
+D:\Projects\ConsoleLearn\WindowsForms\bin\Debug\WindowsForm.exe.config
+D:\Projects\ConsoleLearn\WindowsForms\bin\Debug\WindowsForm.exe
+D:\Projects\ConsoleLearn\WindowsForms\bin\Debug\WindowsForm.pdb
+D:\Projects\ConsoleLearn\WindowsForms\obj\Debug\WindowsForm.csprojResolveAssemblyReference.cache
+D:\Projects\ConsoleLearn\WindowsForms\obj\Debug\WindowsForm.Properties.Resources.resources
+D:\Projects\ConsoleLearn\WindowsForms\obj\Debug\WindowsForm.csproj.GenerateResource.Cache
+D:\Projects\ConsoleLearn\WindowsForms\obj\Debug\WindowsForm.exe
+D:\Projects\ConsoleLearn\WindowsForms\obj\Debug\WindowsForm.pdb
