@@ -8,6 +8,9 @@ using System.Collections;
 
 namespace ConsoleLearn
 {
+    /// <summary>
+    /// 基本使用
+    /// </summary>
     class Program
     {
         /// <summary>
@@ -24,7 +27,16 @@ namespace ConsoleLearn
             ////flowControl();
             //arrayAndCollections();
             //attributeMethod();
-            structure();
+            //structure();
+
+
+            //高级应用
+            //ProgramAdvanced.ProgramAdvanceMan();
+
+            //异常处理
+            //ExceptionLearn.ExceptionLeanMain();
+
+
         }
 
 
