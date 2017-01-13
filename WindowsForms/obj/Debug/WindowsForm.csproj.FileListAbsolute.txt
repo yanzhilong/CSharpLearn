@@ -18,3 +18,4 @@ D:\Projects\CSharpLearn\WindowsForms\bin\Debug\WindowsForm.pdb
 D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.csprojResolveAssemblyReference.cache
 D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.Properties.Resources.resources
 D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.csproj.GenerateResource.Cache
+D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsFormsApplication1.MainForm.resources
