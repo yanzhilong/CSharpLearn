@@ -141,5 +141,11 @@ namespace WindowsFormsApplication1
             NumericUpDownForm nuf = new NumericUpDownForm();
             nuf.Show();
         }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            ListBoxForm lbf = new ListBoxForm();
+            lbf.Show();
+        }
     }
 }
