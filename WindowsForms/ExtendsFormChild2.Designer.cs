@@ -1,6 +1,6 @@
 ﻿namespace WindowsForm
 {
-    partial class SecondForm
+    partial class ExtendsFormChild2
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "SecondForm";
+            this.Text = "ExtendsFormChild2";
         }
 
         #endregion

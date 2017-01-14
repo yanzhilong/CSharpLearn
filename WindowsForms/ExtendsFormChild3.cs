@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsForm
 {
-    public partial class SecondForm : Form
+    public partial class ExtendsFormChild3 : WindowsForm.ExtendsFormChild1
     {
-        public SecondForm()
+        public ExtendsFormChild3()
         {
             InitializeComponent();
+        }
+
+        private void ExtendsFormChild3_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

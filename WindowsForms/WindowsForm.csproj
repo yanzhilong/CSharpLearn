@@ -46,22 +46,163 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ButtonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ButtonForm.Designer.cs">
+      <DependentUpon>ButtonForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CheckBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckBoxForm.Designer.cs">
+      <DependentUpon>CheckBoxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ComboBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComboBoxForm.Designer.cs">
+      <DependentUpon>ComboBoxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExtendsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExtendsForm.Designer.cs">
+      <DependentUpon>ExtendsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExtendsFormChild1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExtendsFormChild1.Designer.cs">
+      <DependentUpon>ExtendsFormChild1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExtendsFormChild2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExtendsFormChild2.Designer.cs">
+      <DependentUpon>ExtendsFormChild2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExtendsFormChild3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExtendsFormChild3.Designer.cs">
+      <DependentUpon>ExtendsFormChild3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBase.Designer.cs">
+      <DependentUpon>FormBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LabelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LabelForm.Designer.cs">
+      <DependentUpon>LabelForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SecondForm.cs">
+    <Compile Include="MDIBaseChild1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SecondForm.Designer.cs">
-      <DependentUpon>SecondForm.cs</DependentUpon>
+    <Compile Include="MDIBaseChild1.Designer.cs">
+      <DependentUpon>MDIBaseChild1.cs</DependentUpon>
     </Compile>
+    <Compile Include="MDIBaseChild2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIBaseChild2.Designer.cs">
+      <DependentUpon>MDIBaseChild2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDIBaseChild3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIBaseChild3.Designer.cs">
+      <DependentUpon>MDIBaseChild3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDIBaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIBaseForm.Designer.cs">
+      <DependentUpon>MDIBaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NumericUpDownForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NumericUpDownForm.Designer.cs">
+      <DependentUpon>NumericUpDownForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpacityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpacityForm.Designer.cs">
+      <DependentUpon>OpacityForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FormBaseSecond.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBaseSecond.Designer.cs">
+      <DependentUpon>FormBaseSecond.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RadioButtonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RadioButtonForm.Designer.cs">
+      <DependentUpon>RadioButtonForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RichTextBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RichTextBoxForm.Designer.cs">
+      <DependentUpon>RichTextBoxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TextBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TextBoxForm.Designer.cs">
+      <DependentUpon>TextBoxForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ButtonForm.resx">
+      <DependentUpon>ButtonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckBoxForm.resx">
+      <DependentUpon>CheckBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComboBoxForm.resx">
+      <DependentUpon>ComboBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExtendsForm.resx">
+      <DependentUpon>ExtendsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExtendsFormChild1.resx">
+      <DependentUpon>ExtendsFormChild1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExtendsFormChild3.resx">
+      <DependentUpon>ExtendsFormChild3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormBase.resx">
+      <DependentUpon>FormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LabelForm.resx">
+      <DependentUpon>LabelForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIBaseForm.resx">
+      <DependentUpon>MDIBaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NumericUpDownForm.resx">
+      <DependentUpon>NumericUpDownForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpacityForm.resx">
+      <DependentUpon>OpacityForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -73,6 +214,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RadioButtonForm.resx">
+      <DependentUpon>RadioButtonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RichTextBoxForm.resx">
+      <DependentUpon>RichTextBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TextBoxForm.resx">
+      <DependentUpon>TextBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

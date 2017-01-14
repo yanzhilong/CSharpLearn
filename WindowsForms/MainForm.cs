@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
 
     {
 
-        SecondForm secondForm;
+        FormBaseSecond secondForm;
         public MainForm()
         {
             InitializeComponent();
@@ -24,7 +24,7 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            secondForm = new SecondForm();
+            secondForm = new FormBaseSecond();
             secondForm.Show();
         }
 
@@ -70,6 +70,76 @@ namespace WindowsFormsApplication1
             }
         }
 
-        
+        private void button4_Click(object sender, EventArgs e)
+        {
+            FormBase formBase = new FormBase();
+            formBase.Show();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            MDIBaseForm mdiBaseForm = new MDIBaseForm();
+            mdiBaseForm.Show();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            ExtendsForm extendsForm = new ExtendsForm();
+            extendsForm.Show();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            OpacityForm opacityForm = new OpacityForm();
+            opacityForm.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            LabelForm labelForm = new LabelForm();
+            labelForm.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ButtonForm buttonForm = new ButtonForm();
+            buttonForm.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            TextBoxForm textBoxForm = new TextBoxForm();
+            textBoxForm.Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            RichTextBoxForm textBoxForm = new RichTextBoxForm();
+            textBoxForm.Show();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            ComboBoxForm comboBoxForm = new ComboBoxForm();
+            comboBoxForm.Show();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            CheckBoxForm checkBoxForm = new CheckBoxForm();
+            checkBoxForm.Show();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            RadioButtonForm radioButtonForm = new RadioButtonForm();
+            radioButtonForm.Show();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            NumericUpDownForm nuf = new NumericUpDownForm();
+            nuf.Show();
+        }
     }
 }

@@ -19,3 +19,17 @@ D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.csprojResolveAssembly
 D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.Properties.Resources.resources
 D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.csproj.GenerateResource.Cache
 D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsFormsApplication1.MainForm.resources
+D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.FormBase.resources
+D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.MDIBaseForm.resources
+D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.ExtendsForm.resources
+D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.ExtendsFormChild1.resources
+D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.ExtendsFormChild3.resources
+D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.OpacityForm.resources
+D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.LabelForm.resources
+D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.ButtonForm.resources
+D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.TextBoxForm.resources
+D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.RichTextBoxForm.resources
+D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.ComboBoxForm.resources
+D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.CheckBoxForm.resources
+D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.RadioButtonForm.resources
+D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.NumericUpDownForm.resources
