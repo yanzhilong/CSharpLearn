@@ -19,12 +19,25 @@ namespace WindowsForm
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(textBox1.Text == "")
+            if(textBox2.Text == "")
             {
                 MessageBox.Show("请输入数据");
             }else
             {
-                textBox1
+                listBox1.Items.Add(textBox2.Text);
+                textBox2.Text = "";
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(listBox1.Items.Count == 0)
+            {
+                MessageBox.Show("请选择项");
+            }else
+            {
+                listBox1.Items.Remove(listBox1.SelectedItem);
+                //label1.Text = "共选择了：" + listBox1.SelectedItems.Count.ToString() + "项";
             }
         }
     }

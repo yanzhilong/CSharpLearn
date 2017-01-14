@@ -35,5 +35,20 @@ namespace WindowsForm
         {
             label9.Text = textBox8.Text;
         }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //只能数字
+            //if ((e.KeyChar != 8 && !char.IsDigit(e.KeyChar)) && e.KeyChar != 13)
+            //{
+            //    MessageBox.Show("商品数量只能输入数字", "操作提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    e.Handled = true;//表示已经处理过了KeyPress事件
+            //}
+        }
     }
 }

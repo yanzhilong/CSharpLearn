@@ -147,5 +147,35 @@ namespace WindowsFormsApplication1
             ListBoxForm lbf = new ListBoxForm();
             lbf.Show();
         }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            PanelForm pf = new PanelForm();
+            pf.Show();
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            TabControlForm tcf = new TabControlForm();
+            tcf.Show();
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            MenuStripForm msf = new MenuStripForm();
+            msf.Show();
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            ToolSTripForm ttf = new ToolSTripForm();
+            ttf.Show();
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            StatusStripForm ssf = new StatusStripForm();
+            ssf.Show();
+        }
     }
 }
