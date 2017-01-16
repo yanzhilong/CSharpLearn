@@ -177,5 +177,65 @@ namespace WindowsFormsApplication1
             StatusStripForm ssf = new StatusStripForm();
             ssf.Show();
         }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            ImageListForm ilf = new ImageListForm();
+            ilf.Show();
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            ListViewForm lf = new ListViewForm();
+            lf.Show();
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            TreeViewForm tvf = new TreeViewForm();
+            tvf.Show();
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            DateTimePickerForm dtp = new DateTimePickerForm();
+            dtp.Show();
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            MonthCalendarForm mcf = new MonthCalendarForm();
+            mcf.Show();
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            ErrorProviderForm epf = new ErrorProviderForm();
+            epf.Show();
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            TimerForm tf = new TimerForm();
+            tf.Show();
+        }
+
+        private void button26_Click(object sender, EventArgs e)
+        {
+            ProgressBarForm pbf = new ProgressBarForm();
+            pbf.Show();
+        }
+
+        private void button27_Click(object sender, EventArgs e)
+        {
+            TrackBarForm tbf = new TrackBarForm();
+            tbf.Show();
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+            TreeViewListViewForm tvlvf = new TreeViewListViewForm();
+            tvlvf.Show();
+        }
     }
 }

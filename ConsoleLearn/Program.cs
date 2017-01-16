@@ -18,7 +18,7 @@ namespace ConsoleLearn
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
-        {
+       { 
             //helloWorld();
             //nameSpace();
             //variate();
