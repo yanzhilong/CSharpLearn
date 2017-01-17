@@ -243,5 +243,10 @@ namespace WindowsFormsApplication1
             ConnectionDatabaseForm cdf = new ConnectionDatabaseForm();
             cdf.Show();
         }
+
+        private void MainForm_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
