@@ -55,6 +55,7 @@
             this.readersql = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.readerquery = new System.Windows.Forms.Button();
+            this.havevalue = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // databasttype
@@ -294,11 +295,22 @@
             this.readerquery.UseVisualStyleBackColor = true;
             this.readerquery.Click += new System.EventHandler(this.readerquery_Click);
             // 
+            // havevalue
+            // 
+            this.havevalue.Location = new System.Drawing.Point(283, 302);
+            this.havevalue.Name = "havevalue";
+            this.havevalue.Size = new System.Drawing.Size(75, 23);
+            this.havevalue.TabIndex = 29;
+            this.havevalue.Text = "判断有值";
+            this.havevalue.UseVisualStyleBackColor = true;
+            this.havevalue.Click += new System.EventHandler(this.havevalue_Click);
+            // 
             // ConnectionDatabaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 539);
+            this.Controls.Add(this.havevalue);
             this.Controls.Add(this.readerquery);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.readersql);
@@ -363,5 +375,6 @@
         private System.Windows.Forms.TextBox readersql;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button readerquery;
+        private System.Windows.Forms.Button havevalue;
     }
 }

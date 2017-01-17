@@ -416,6 +416,7 @@ namespace WindowsForm
                             {
                                 result.Append(sdr[1].ToString() + "\n");
                             }
+                            sdr.Close();
                             refreshMessage();
                         }
                     }
@@ -442,6 +443,80 @@ namespace WindowsForm
                             {
                                 result.Append(sdr[1].ToString() + "\n");
                             }
+                            sdr.Close();
+                            refreshMessage();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        result.Append(ex.Message + "\n");
+                        refreshMessage();
+                    }
+
+                    break;
+                default:
+                    break;
+            }
+            refreshMessage();
+        }
+
+        private void havevalue_Click(object sender, EventArgs e)
+        {
+            switch (databasetypeenum)
+            {
+                case DatabaseType.MYSQL:
+
+                    try
+                    {
+                        if (MySqlconn.State == ConnectionState.Open || readersql.Text != "")
+                        {
+                            string sql = readersql.Text.Trim(); ;
+                            MySqlCommand cmd = new MySqlCommand(sql, MySqlconn);
+                            MySqlDataReader sdr = cmd.ExecuteReader();
+                            sdr.Read();
+                            if (sdr.HasRows)
+                            {
+                                result.Append("数据表中有值\n");
+                                refreshMessage();
+                            }
+                            else
+                            {
+                                result.Append("数据表中没有任何数据\n");
+                            }
+                            sdr.Close();
+                            refreshMessage();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        result.Append(ex.Message + "\n");
+                        refreshMessage();
+                    }
+
+                    break;
+                case DatabaseType.SQLSERVER:
+
+                    try
+                    {
+                        if (SqlServerconn.State == ConnectionState.Open || readersql.Text != "")
+                        {
+                            SqlCommand sqlcmd = new SqlCommand();
+                            sqlcmd.Connection = SqlServerconn;
+                            sqlcmd.CommandText = readersql.Text.Trim();
+                            sqlcmd.CommandType = CommandType.Text;
+
+                            SqlDataReader sdr = sqlcmd.ExecuteReader();
+                            sdr.Read();
+                            if (sdr.HasRows)
+                            {
+                                result.Append("数据表中有值\n");
+                                refreshMessage();
+                            }
+                            else
+                            {
+                                result.Append("数据表中没有任何数据\n");
+                            }
+                            sdr.Close();
                             refreshMessage();
                         }
                     }
