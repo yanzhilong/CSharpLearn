@@ -45,6 +45,16 @@
             this.close = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.tablename = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.selectCount = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.nonsql = new System.Windows.Forms.TextBox();
+            this.nonquery = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.readersql = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.readerquery = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // databasttype
@@ -160,9 +170,9 @@
             // 
             // connectionresult
             // 
-            this.connectionresult.Location = new System.Drawing.Point(16, 239);
+            this.connectionresult.Location = new System.Drawing.Point(14, 362);
             this.connectionresult.Name = "connectionresult";
-            this.connectionresult.Size = new System.Drawing.Size(278, 160);
+            this.connectionresult.Size = new System.Drawing.Size(278, 131);
             this.connectionresult.TabIndex = 15;
             this.connectionresult.Text = "";
             // 
@@ -196,11 +206,109 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // tablename
+            // 
+            this.tablename.Location = new System.Drawing.Point(75, 230);
+            this.tablename.Name = "tablename";
+            this.tablename.Size = new System.Drawing.Size(121, 21);
+            this.tablename.TabIndex = 19;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(14, 233);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(29, 12);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "表名";
+            // 
+            // selectCount
+            // 
+            this.selectCount.Location = new System.Drawing.Point(202, 228);
+            this.selectCount.Name = "selectCount";
+            this.selectCount.Size = new System.Drawing.Size(75, 23);
+            this.selectCount.TabIndex = 21;
+            this.selectCount.Text = "查询数据";
+            this.selectCount.UseVisualStyleBackColor = true;
+            this.selectCount.Click += new System.EventHandler(this.selectCount_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(12, 267);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(41, 12);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "增删改";
+            // 
+            // nonsql
+            // 
+            this.nonsql.Location = new System.Drawing.Point(75, 264);
+            this.nonsql.Name = "nonsql";
+            this.nonsql.Size = new System.Drawing.Size(121, 21);
+            this.nonsql.TabIndex = 23;
+            this.nonsql.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // nonquery
+            // 
+            this.nonquery.Location = new System.Drawing.Point(202, 262);
+            this.nonquery.Name = "nonquery";
+            this.nonquery.Size = new System.Drawing.Size(75, 23);
+            this.nonquery.TabIndex = 24;
+            this.nonquery.Text = "NonQuery";
+            this.nonquery.UseVisualStyleBackColor = true;
+            this.nonquery.Click += new System.EventHandler(this.nonquery_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 307);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(29, 12);
+            this.label9.TabIndex = 25;
+            this.label9.Text = "查询";
+            // 
+            // readersql
+            // 
+            this.readersql.Location = new System.Drawing.Point(75, 304);
+            this.readersql.Name = "readersql";
+            this.readersql.Size = new System.Drawing.Size(121, 21);
+            this.readersql.TabIndex = 26;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(0, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 27;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // readerquery
+            // 
+            this.readerquery.Location = new System.Drawing.Point(202, 302);
+            this.readerquery.Name = "readerquery";
+            this.readerquery.Size = new System.Drawing.Size(75, 23);
+            this.readerquery.TabIndex = 28;
+            this.readerquery.Text = "query";
+            this.readerquery.UseVisualStyleBackColor = true;
+            this.readerquery.Click += new System.EventHandler(this.readerquery_Click);
+            // 
             // ConnectionDatabaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(404, 434);
+            this.ClientSize = new System.Drawing.Size(404, 539);
+            this.Controls.Add(this.readerquery);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.readersql);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.nonquery);
+            this.Controls.Add(this.nonsql);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.selectCount);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.tablename);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.close);
@@ -245,5 +353,15 @@
         private System.Windows.Forms.Button close;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox tablename;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button selectCount;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox nonsql;
+        private System.Windows.Forms.Button nonquery;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox readersql;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button readerquery;
     }
 }
