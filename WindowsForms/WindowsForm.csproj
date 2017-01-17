@@ -64,6 +64,12 @@
     <Compile Include="ComboBoxForm.Designer.cs">
       <DependentUpon>ComboBoxForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConnectionDatabaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnectionDatabaseForm.Designer.cs">
+      <DependentUpon>ConnectionDatabaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DateTimePickerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ComboBoxForm.resx">
       <DependentUpon>ComboBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConnectionDatabaseForm.resx">
+      <DependentUpon>ConnectionDatabaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DateTimePickerForm.resx">
       <DependentUpon>DateTimePickerForm.cs</DependentUpon>

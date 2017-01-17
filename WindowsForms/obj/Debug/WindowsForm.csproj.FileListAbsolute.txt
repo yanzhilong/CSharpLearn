@@ -78,3 +78,5 @@ D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.TimerForm.resources
 D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.ProgressBarForm.resources
 D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.TrackBarForm.resources
 D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.TreeViewListViewForm.resources
+D:\Projects\CSharpLearn\WindowsForms\bin\Debug\MySql.Data.dll
+D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.ConnectionDatabaseForm.resources

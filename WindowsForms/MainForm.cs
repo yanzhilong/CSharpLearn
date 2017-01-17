@@ -237,5 +237,11 @@ namespace WindowsFormsApplication1
             TreeViewListViewForm tvlvf = new TreeViewListViewForm();
             tvlvf.Show();
         }
+
+        private void button29_Click(object sender, EventArgs e)
+        {
+            ConnectionDatabaseForm cdf = new ConnectionDatabaseForm();
+            cdf.Show();
+        }
     }
 }
