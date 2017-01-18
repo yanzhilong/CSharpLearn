@@ -110,11 +110,29 @@
     <Compile Include="ExtendsFormChild3.Designer.cs">
       <DependentUpon>ExtendsFormChild3.cs</DependentUpon>
     </Compile>
+    <Compile Include="FanXingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FanXingForm.Designer.cs">
+      <DependentUpon>FanXingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileForm.Designer.cs">
+      <DependentUpon>FileForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormBase.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormBase.Designer.cs">
       <DependentUpon>FormBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IEnumeratorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IEnumeratorForm.Designer.cs">
+      <DependentUpon>IEnumeratorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ImageListForm.cs">
       <SubType>Form</SubType>
@@ -199,6 +217,12 @@
     </Compile>
     <Compile Include="PanelForm.Designer.cs">
       <DependentUpon>PanelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PartialForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PartialForm.Designer.cs">
+      <DependentUpon>PartialForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ProgressBarForm.cs">
@@ -301,8 +325,17 @@
     <EmbeddedResource Include="ExtendsFormChild3.resx">
       <DependentUpon>ExtendsFormChild3.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FanXingForm.resx">
+      <DependentUpon>FanXingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileForm.resx">
+      <DependentUpon>FileForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IEnumeratorForm.resx">
+      <DependentUpon>IEnumeratorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImageListForm.resx">
       <DependentUpon>ImageListForm.cs</DependentUpon>
@@ -336,6 +369,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PanelForm.resx">
       <DependentUpon>PanelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PartialForm.resx">
+      <DependentUpon>PartialForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProgressBarForm.resx">
       <DependentUpon>ProgressBarForm.cs</DependentUpon>

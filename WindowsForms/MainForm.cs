@@ -248,5 +248,29 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+            IEnumeratorForm ief = new IEnumeratorForm();
+            ief.Show();
+        }
+
+        private void button31_Click(object sender, EventArgs e)
+        {
+            PartialForm pf = new PartialForm();
+            pf.Show();
+        }
+
+        private void button32_Click(object sender, EventArgs e)
+        {
+            FanXingForm fxf = new FanXingForm();
+            fxf.Show();
+        }
+
+        private void button33_Click(object sender, EventArgs e)
+        {
+            FileForm ff = new FileForm();
+            ff.Show();
+        }
     }
 }
