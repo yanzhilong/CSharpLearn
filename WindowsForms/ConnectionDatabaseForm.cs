@@ -532,5 +532,295 @@ namespace WindowsForm
             }
             refreshMessage();
         }
+
+        MySqlDataAdapter mysqlda;
+        SqlDataAdapter sda;
+        DataSet ds;
+        private void loaddata_Click(object sender, EventArgs e)
+        {
+            switch (databasetypeenum)
+            {
+                case DatabaseType.MYSQL:
+
+                    try
+                    {
+                        if (MySqlconn.State == ConnectionState.Open || loadsql.Text != "")
+                        {
+                            string sql = loadsql.Text.Trim(); ;
+                            MySqlCommand cmd = new MySqlCommand(sql, MySqlconn);
+                            mysqlda = new MySqlDataAdapter();
+                            mysqlda.SelectCommand = cmd;
+                            ds = new DataSet();
+                            mysqlda.Fill(ds, "cs");
+                            dataGridView1.DataSource = ds.Tables[0];
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        result.Append(ex.Message + "\n");
+                        refreshMessage();
+                    }
+
+                    break;
+                case DatabaseType.SQLSERVER:
+
+                    try
+                    {
+                        if (SqlServerconn.State == ConnectionState.Open || loadsql.Text != "")
+                        {
+                            SqlCommand sqlcmd = new SqlCommand(loadsql.Text.Trim(), SqlServerconn);
+                            sda = new SqlDataAdapter();
+                            sda.SelectCommand = sqlcmd;
+                            ds = new DataSet();
+                            sda.Fill(ds, "cs");
+                            dataGridView1.DataSource = ds.Tables[0];
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        result.Append(ex.Message + "\n");
+                        refreshMessage();
+                    }
+
+                    break;
+                default:
+                    break;
+            }
+            refreshMessage();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idtb.Text = dataGridView1.SelectedCells[0].Value.ToString();
+            nametb.Text = dataGridView1.SelectedCells[1].Value.ToString();
+            agetb.Text = dataGridView1.SelectedCells[2].Value.ToString();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+           
+            switch (databasetypeenum)
+            {
+                case DatabaseType.MYSQL:
+                    DataTable dtmysql = ds.Tables["cs"];
+                    mysqlda.FillSchema(dtmysql, SchemaType.Mapped);//把表结构加载到表中
+                    DataRow drmysql = dtmysql.Rows.Find(idtb.Text);//创建行，传入id
+                    drmysql["name"] = nametb.Text.Trim();//设置值
+                    drmysql["age"] = agetb.Text.Trim();
+                    //将表数据更新到数据库中
+                    MySqlCommandBuilder cmdbuidermysql = new MySqlCommandBuilder(mysqlda);
+                    mysqlda.Update(dtmysql);
+
+                    break;
+                case DatabaseType.SQLSERVER:
+
+                    DataTable dtsql = ds.Tables["cs"];
+                    sda.FillSchema(dtsql, SchemaType.Mapped);//把表结构加载到表中
+                    DataRow dr = dtsql.Rows.Find(idtb.Text);//创建行，传入id
+                    dr["name"] = nametb.Text.Trim();//设置值
+                    dr["age"] = agetb.Text.Trim();
+                    //将表数据更新到数据库中
+                    SqlCommandBuilder cmdbuider = new SqlCommandBuilder(sda);
+                    sda.Update(dtsql);
+                    break;
+                default:
+                    break;
+            }
+
+            
+        }
+
+        DataSet ds1;
+        private void button6_Click(object sender, EventArgs e)
+        {
+            switch (databasetypeenum)
+            {
+                case DatabaseType.MYSQL:
+
+                    try
+                    {
+                        if (MySqlconn.State == ConnectionState.Open || loadsqlnew.Text != "")
+                        {
+                            string sql = loadsqlnew.Text.Trim(); ;
+                            MySqlCommand cmd = new MySqlCommand(sql, MySqlconn);
+                            mysqlda = new MySqlDataAdapter();
+                            mysqlda.SelectCommand = cmd;
+                            ds1 = new DataSet();
+                            mysqlda.Fill(ds1, "cs");
+                            dataGridView1.DataSource = ds1.Tables[0];
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        result.Append(ex.Message + "\n");
+                        refreshMessage();
+                    }
+
+                    break;
+                case DatabaseType.SQLSERVER:
+
+                    try
+                    {
+                        if (SqlServerconn.State == ConnectionState.Open || loadsqlnew.Text != "")
+                        {
+                            SqlCommand sqlcmd = new SqlCommand(loadsqlnew.Text.Trim(), SqlServerconn);
+                            sda = new SqlDataAdapter();
+                            sda.SelectCommand = sqlcmd;
+                            ds1 = new DataSet();
+                            sda.Fill(ds1, "cs");
+                            dataGridView1.DataSource = ds1.Tables[0];
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        result.Append(ex.Message + "\n");
+                        refreshMessage();
+                    }
+
+                    break;
+                default:
+                    break;
+            }
+            refreshMessage();
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ds.Merge(ds1, true, MissingSchemaAction.AddWithKey);
+            dataGridView1.DataSource = ds.Tables[0];
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ds1 = ds.Copy();
+            dataGridView1.DataSource = ds1.Tables[0];
+        }
+
+        MySqlDataAdapter mysqlAdapter;
+        SqlDataAdapter sqlAdapter;
+        int maxIndex = 0;
+        private void button11_Click(object sender, EventArgs e)
+        {
+            switch (databasetypeenum)
+            {
+                case DatabaseType.MYSQL:
+
+                    try
+                    {
+                        if (MySqlconn.State == ConnectionState.Open || tabletb.Text != "")
+                        {
+                            string sql = "select * from " + tabletb.Text.Trim();
+                            MySqlCommand cmd = new MySqlCommand(sql, MySqlconn);
+
+                            MySqlCommand cmdcount = new MySqlCommand("select count(*) from " + tabletb.Text, MySqlconn);
+                            maxIndex = int.Parse(cmdcount.ExecuteScalar().ToString());
+
+                            mysqlAdapter = new MySqlDataAdapter();
+                            mysqlAdapter.SelectCommand = cmd;
+                            DataSet ds = new DataSet();
+                            mysqlAdapter.Fill(ds, "cs");
+                            dataGridView2.DataSource = ds.Tables[0];
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        result.Append(ex.Message + "\n");
+                        refreshMessage();
+                    }
+
+                    break;
+                case DatabaseType.SQLSERVER:
+
+                    try
+                    {
+                        if (SqlServerconn.State == ConnectionState.Open || tabletb.Text != "")
+                        {
+                            string sql = "select * from " + tabletb.Text.Trim();
+                            SqlCommand sqlcmd = new SqlCommand(sql, SqlServerconn);
+
+                            SqlCommand cmdcount = new SqlCommand("select count(*) from " + tabletb.Text, SqlServerconn);
+                            maxIndex = int.Parse(cmdcount.ExecuteScalar().ToString());
+
+                            sqlAdapter = new SqlDataAdapter();
+                            sqlAdapter.SelectCommand = sqlcmd;
+                            DataSet ds = new DataSet();
+                            sqlAdapter.Fill(ds, "cs");
+                            dataGridView2.DataSource = ds.Tables[0];
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        result.Append(ex.Message + "\n");
+                        refreshMessage();
+                    }
+
+                    break;
+                default:
+                    break;
+            }
+            refreshMessage();
+        }
+
+        //取一条数据
+        public void dsResult(int currentIndex)
+        {
+            
+            DataSet dataSet = new DataSet("cs");
+
+            switch (databasetypeenum)
+            {
+                case DatabaseType.MYSQL:
+
+                    mysqlAdapter.Fill(dataSet, currentIndex, 1, "cs");
+
+                    break;
+                case DatabaseType.SQLSERVER:
+
+                    sqlAdapter.Fill(dataSet, currentIndex, 1, "cs");
+
+                    break;
+                default:
+                    break;
+            }
+            dataGridView2.DataSource = dataSet.Tables[0];
+        }
+
+        int i = 0;
+        private void button7_Click(object sender, EventArgs e)
+        {
+            i = 0;
+            dsResult(i);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            i -= 1;
+            if (i < 0)
+            {
+                i += 1;
+            }
+            dsResult(i);
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            i += 1;
+            if (i > (maxIndex - 1))
+            {
+                i -= 1;
+            }
+            dsResult(i);
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            i = maxIndex - 1;
+            dsResult(i);
+        }
     }
 }
