@@ -96,3 +96,7 @@ D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.IEnumeratorForm.resou
 D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.PartialForm.resources
 D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.FanXingForm.resources
 D:\Projects\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.FileForm.resources
+D:\Project\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.FanXingForm.resources
+D:\Project\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.FileForm.resources
+D:\Project\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.IEnumeratorForm.resources
+D:\Project\CSharpLearn\WindowsForms\obj\Debug\WindowsForm.PartialForm.resources
