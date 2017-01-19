@@ -272,5 +272,17 @@ namespace WindowsFormsApplication1
             FileForm ff = new FileForm();
             ff.Show();
         }
+
+        private void button34_Click(object sender, EventArgs e)
+        {
+            GPIForm gpif = new GPIForm();
+            gpif.Show();
+        }
+
+        private void button35_Click(object sender, EventArgs e)
+        {
+            ThreadForm tf = new ThreadForm();
+            tf.Show();
+        }
     }
 }

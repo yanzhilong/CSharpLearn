@@ -51,11 +51,25 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.copyfilestotb = new System.Windows.Forms.TextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.copyfilestb = new System.Windows.Forms.TextBox();
+            this.button16 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(5, 172);
+            this.button1.Location = new System.Drawing.Point(11, 14);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -65,15 +79,15 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(5, 12);
+            this.richTextBox1.Location = new System.Drawing.Point(358, 31);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(259, 154);
+            this.richTextBox1.Size = new System.Drawing.Size(389, 315);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(86, 172);
+            this.button2.Location = new System.Drawing.Point(92, 14);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
@@ -83,14 +97,14 @@
             // 
             // filetb1
             // 
-            this.filetb1.Location = new System.Drawing.Point(5, 202);
+            this.filetb1.Location = new System.Drawing.Point(11, 44);
             this.filetb1.Name = "filetb1";
             this.filetb1.Size = new System.Drawing.Size(100, 21);
             this.filetb1.TabIndex = 3;
             // 
             // filetb2
             // 
-            this.filetb2.Location = new System.Drawing.Point(164, 202);
+            this.filetb2.Location = new System.Drawing.Point(170, 44);
             this.filetb2.Name = "filetb2";
             this.filetb2.Size = new System.Drawing.Size(100, 21);
             this.filetb2.TabIndex = 4;
@@ -98,7 +112,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(128, 205);
+            this.label1.Location = new System.Drawing.Point(134, 47);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 12);
             this.label1.TabIndex = 5;
@@ -106,7 +120,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(5, 242);
+            this.button3.Location = new System.Drawing.Point(11, 84);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 6;
@@ -116,7 +130,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(107, 242);
+            this.button4.Location = new System.Drawing.Point(113, 84);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 7;
@@ -126,7 +140,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(5, 272);
+            this.button5.Location = new System.Drawing.Point(11, 114);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(100, 23);
             this.button5.TabIndex = 8;
@@ -136,14 +150,14 @@
             // 
             // filetb
             // 
-            this.filetb.Location = new System.Drawing.Point(6, 332);
+            this.filetb.Location = new System.Drawing.Point(12, 174);
             this.filetb.Name = "filetb";
             this.filetb.Size = new System.Drawing.Size(109, 21);
             this.filetb.TabIndex = 9;
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(121, 330);
+            this.button6.Location = new System.Drawing.Point(127, 172);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 23);
             this.button6.TabIndex = 10;
@@ -153,7 +167,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(202, 330);
+            this.button7.Location = new System.Drawing.Point(208, 172);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 23);
             this.button7.TabIndex = 11;
@@ -167,7 +181,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(6, 302);
+            this.button8.Location = new System.Drawing.Point(12, 144);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(99, 23);
             this.button8.TabIndex = 12;
@@ -182,7 +196,7 @@
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4});
-            this.listView1.Location = new System.Drawing.Point(6, 404);
+            this.listView1.Location = new System.Drawing.Point(12, 246);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(306, 100);
             this.listView1.TabIndex = 16;
@@ -210,7 +224,7 @@
             // 
             // foldertb
             // 
-            this.foldertb.Location = new System.Drawing.Point(91, 377);
+            this.foldertb.Location = new System.Drawing.Point(97, 219);
             this.foldertb.Name = "foldertb";
             this.foldertb.Size = new System.Drawing.Size(159, 21);
             this.foldertb.TabIndex = 15;
@@ -219,7 +233,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 380);
+            this.label2.Location = new System.Drawing.Point(16, 222);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 12);
             this.label2.TabIndex = 14;
@@ -227,7 +241,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(262, 375);
+            this.button9.Location = new System.Drawing.Point(268, 217);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(53, 23);
             this.button9.TabIndex = 13;
@@ -235,11 +249,139 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(358, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(107, 12);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "操作输出,文件内容";
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(12, 367);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(75, 23);
+            this.button10.TabIndex = 18;
+            this.button10.Text = "写入文本";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(97, 367);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 23);
+            this.button11.TabIndex = 19;
+            this.button11.Text = "读取文本";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.FileName = "openFileDialog2";
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(11, 396);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(75, 23);
+            this.button12.TabIndex = 20;
+            this.button12.Text = "写入字节";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(97, 397);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(75, 23);
+            this.button13.TabIndex = 21;
+            this.button13.Text = "读取字节";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(2, 630);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(75, 23);
+            this.button14.TabIndex = 27;
+            this.button14.Text = "目标位置";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(205, 630);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(75, 23);
+            this.button15.TabIndex = 26;
+            this.button15.Text = "拷贝";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // copyfilestotb
+            // 
+            this.copyfilestotb.Location = new System.Drawing.Point(83, 630);
+            this.copyfilestotb.Name = "copyfilestotb";
+            this.copyfilestotb.Size = new System.Drawing.Size(116, 21);
+            this.copyfilestotb.TabIndex = 25;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 12;
+            this.listBox1.Location = new System.Drawing.Point(12, 485);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.listBox1.Size = new System.Drawing.Size(268, 136);
+            this.listBox1.TabIndex = 24;
+            // 
+            // copyfilestb
+            // 
+            this.copyfilestb.Location = new System.Drawing.Point(93, 458);
+            this.copyfilestb.Name = "copyfilestb";
+            this.copyfilestb.Size = new System.Drawing.Size(187, 21);
+            this.copyfilestb.TabIndex = 23;
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(12, 456);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(75, 23);
+            this.button16.TabIndex = 22;
+            this.button16.Text = "打开目录";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 438);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(77, 12);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "批量复制文件";
+            // 
             // FileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(503, 580);
+            this.ClientSize = new System.Drawing.Size(770, 717);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.button14);
+            this.Controls.Add(this.button15);
+            this.Controls.Add(this.copyfilestotb);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.copyfilestb);
+            this.Controls.Add(this.button16);
+            this.Controls.Add(this.button13);
+            this.Controls.Add(this.button12);
+            this.Controls.Add(this.button11);
+            this.Controls.Add(this.button10);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.foldertb);
             this.Controls.Add(this.label2);
@@ -259,6 +401,7 @@
             this.Controls.Add(this.button1);
             this.Name = "FileForm";
             this.Text = "FileForm";
+            this.Load += new System.EventHandler(this.FileForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -289,5 +432,19 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog2;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.TextBox copyfilestotb;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TextBox copyfilestb;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Label label4;
     }
 }

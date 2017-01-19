@@ -180,5 +180,113 @@ namespace WindowsForm
         {
 
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            //设置保存文件的格式
+            saveFileDialog1.Filter = "文本文件(*.txt)|*.txt";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                //使用“另存为”对话框中输入的文件名实例化StreamWriter对象
+                StreamWriter sw = new StreamWriter(saveFileDialog1.FileName, true);//是否是追加
+                //向创建的文件中写入内容
+                //sw.WriteLine(richTextBox1.Text);
+                sw.Write(richTextBox1.Text);
+                //关闭当前文件写入流
+                sw.Close();
+                richTextBox1.Text = string.Empty;
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            //设置打开文件的格式
+            openFileDialog1.Filter = "文本文件(*.txt)|*.txt";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                richTextBox1.Text = string.Empty;
+                //使用“打开”对话框中选择的文件实例化StreamReader对象
+                StreamReader sr = new StreamReader(openFileDialog1.FileName);
+                //调用ReadToEnd方法读取选中文件的全部内容
+                richTextBox1.Text = sr.ReadToEnd();
+                //关闭当前文件读取流
+                sr.Close();
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            //设置保存文件的格式
+            saveFileDialog1.Filter = "二进制文件(*.dat)|*.dat";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                //使用“另存为”对话框中输入的文件名实例化FileStream对象
+                FileStream myStream = new FileStream(saveFileDialog1.FileName, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                //使用FileStream对象实例化BinaryWriter二进制写入流对象
+                BinaryWriter myWriter = new BinaryWriter(myStream);
+                //以二进制方式向创建的文件中写入内容
+                myWriter.Write(richTextBox1.Text);
+                //关闭当前二进制写入流
+                myWriter.Close();
+                //关闭当前文件流
+                myStream.Close();
+                richTextBox1.Text = string.Empty;
+            }
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Text = string.Empty;
+            //使用“打开”对话框中选择的文件名实例化FileStream对象
+            FileStream myStream = new FileStream(openFileDialog1.FileName, FileMode.Open, FileAccess.Read);
+            //使用FileStream对象实例化BinaryReader二进制写入流对象
+            BinaryReader myReader = new BinaryReader(myStream);
+            if (myReader.PeekChar() != -1)
+            {
+                //以二进制方式读取文件中的内容
+                richTextBox1.Text = Convert.ToString(myReader.ReadString());
+            }
+            //关闭当前二进制读取流
+            myReader.Close();
+            //关闭当前文件流
+            myStream.Close();
+        }
+
+        private void FileForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                copyfilestb.Text = folderBrowserDialog1.SelectedPath;
+                DirectoryInfo dir = new DirectoryInfo(copyfilestb.Text);
+                FileInfo[] f = dir.GetFiles();
+                for (int i = 0; i < f.Length; i++)
+                {
+                    listBox1.Items.Add(f[i]);
+                }
+            }
+           
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                copyfilestotb.Text = folderBrowserDialog1.SelectedPath;
+            }
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            foreach (object o in listBox1.SelectedItems)
+            {
+                File.Copy(copyfilestb.Text + "\\" + o.ToString(), copyfilestotb.Text + "\\" + o.ToString());
+            }
+        }
     }
 }

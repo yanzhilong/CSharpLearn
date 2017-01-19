@@ -128,6 +128,12 @@
     <Compile Include="FormBase.Designer.cs">
       <DependentUpon>FormBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="GPIForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GPIForm.Designer.cs">
+      <DependentUpon>GPIForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="IEnumeratorForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -268,6 +274,12 @@
     <Compile Include="TextBoxForm.Designer.cs">
       <DependentUpon>TextBoxForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThreadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThreadForm.Designer.cs">
+      <DependentUpon>ThreadForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TimerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -333,6 +345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GPIForm.resx">
+      <DependentUpon>GPIForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IEnumeratorForm.resx">
       <DependentUpon>IEnumeratorForm.cs</DependentUpon>
@@ -400,6 +415,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TextBoxForm.resx">
       <DependentUpon>TextBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThreadForm.resx">
+      <DependentUpon>ThreadForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TimerForm.resx">
       <DependentUpon>TimerForm.cs</DependentUpon>
