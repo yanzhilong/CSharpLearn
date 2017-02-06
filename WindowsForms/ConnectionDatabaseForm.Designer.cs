@@ -81,7 +81,6 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -570,15 +569,6 @@
             this.button13.UseVisualStyleBackColor = true;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
-            // button14
-            // 
-            this.button14.Location = new System.Drawing.Point(0, 0);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(75, 23);
-            this.button14.TabIndex = 58;
-            this.button14.Text = "button14";
-            this.button14.UseVisualStyleBackColor = true;
-            // 
             // button15
             // 
             this.button15.Location = new System.Drawing.Point(177, 979);
@@ -606,7 +596,6 @@
             this.ClientSize = new System.Drawing.Size(776, 1040);
             this.Controls.Add(this.button16);
             this.Controls.Add(this.button15);
-            this.Controls.Add(this.button14);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.dataGridView2);
@@ -725,7 +714,6 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button16;
     }
