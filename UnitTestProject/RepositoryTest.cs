@@ -18,8 +18,8 @@ namespace UnitTestProject
             Location location = new Location();
             location.LocationID = Guid.NewGuid().ToString();
             location.LocationPID = Guid.NewGuid().ToString();
-            location.LocationName = "联发新天地";
-            location.LocationFullName = "联发新天地";
+            location.LocationName = "联发新天地1";
+            location.LocationFullName = "联发新天地1";
             location.LocationCode = StringUtil.GetSpellCode("项目名称-" + location.LocationName);
             location.LocationLevel = 0;
             location.LocationPath = location.LocationCode;

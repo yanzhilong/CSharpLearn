@@ -44,6 +44,9 @@ namespace CrRepairs
             {
                 var c = new LocationList();
                 this.panel1.Controls.Add(c);
+            }else
+            {
+                this.panel1.Controls.Clear();
             }
 
 
