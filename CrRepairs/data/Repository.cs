@@ -56,19 +56,24 @@ namespace xyz.ibean.data
             return MyIdataSource.getLocations();
         }
 
-        public List<Location> getLocationById(string locationId)
+        public Location getLocationById(string locationId)
         {
             throw new NotImplementedException();
         }
 
         public List<Location> getLocationsById(string locationId)
         {
-            throw new NotImplementedException();
+            return MyIdataSource.getLocationsById(locationId);
         }
 
         public List<Location> getLocationsByQuery(string locationstr)
         {
-            throw new NotImplementedException();
+            return MyIdataSource.getLocationsByQuery(locationstr);
+        }
+
+        public bool updateLocations(List<Location> locations)
+        {
+            return MyIdataSource.updateLocations(locations); 
         }
     }
 }

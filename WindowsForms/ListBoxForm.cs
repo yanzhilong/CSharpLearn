@@ -40,5 +40,10 @@ namespace WindowsForm
                 //label1.Text = "共选择了：" + listBox1.SelectedItems.Count.ToString() + "项";
             }
         }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

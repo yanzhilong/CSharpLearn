@@ -53,6 +53,7 @@
     <Compile Include="data\IDataSource.cs" />
     <Compile Include="data\MySqlDataSource.cs" />
     <Compile Include="data\Repository.cs" />
+    <Compile Include="model\MysqlConnection.cs" />
     <Compile Include="usercontrol\LocationList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -70,6 +71,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="util\StringUtil.cs" />
+    <Compile Include="util\TreeViewUtil.cs" />
     <EmbeddedResource Include="usercontrol\LocationList.resx">
       <DependentUpon>LocationList.cs</DependentUpon>
     </EmbeddedResource>

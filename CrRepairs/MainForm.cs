@@ -19,6 +19,8 @@ namespace CrRepairs
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            treeView1.HideSelection = false;
+
             TreeNode tn1 = treeView1.Nodes.Add("报修模块");
             TreeNode Ntn1 = new TreeNode("位置管理");
             TreeNode Ntn2 = new TreeNode("设备点管理");

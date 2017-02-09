@@ -35,6 +35,12 @@ namespace xyz.ibean.data.dao
         bool updateLocation(Location location);
 
         /// <summary>
+        /// 批量更新地址名称
+        /// </summary>
+        /// <returns></returns>
+        bool updateLocations(List<Location> locations);
+
+        /// <summary>
         /// 获得所有的地址信息
         /// </summary>
         /// <returns></returns>
@@ -45,7 +51,7 @@ namespace xyz.ibean.data.dao
         /// </summary>
         /// <param name="locationId"></param>
         /// <returns></returns>
-        List<Location> getLocationById(string locationId);
+        Location getLocationById(string locationId);
 
         /// <summary>
         /// 查询某一个地址下面的所有子地址信息

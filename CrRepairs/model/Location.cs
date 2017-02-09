@@ -17,7 +17,6 @@ namespace CrRepairs.model
         private string locationCode;//地址编码
         private string locationFullName;//地址全名
         private int locationLevel;//地址级别
-        private string locationPath;//地址全称
 
         public string LocationID
         {
@@ -81,20 +80,6 @@ namespace CrRepairs.model
             set
             {
                 locationFullName = value;
-            }
-        }
-
-        
-        public string LocationPath
-        {
-            get
-            {
-                return locationPath;
-            }
-
-            set
-            {
-                locationPath = value;
             }
         }
 

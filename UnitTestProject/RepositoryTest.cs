@@ -22,7 +22,6 @@ namespace UnitTestProject
             location.LocationFullName = "联发新天地1";
             location.LocationCode = StringUtil.GetSpellCode("项目名称-" + location.LocationName);
             location.LocationLevel = 0;
-            location.LocationPath = location.LocationCode;
             Assert.IsNotNull(repository.addLocation(location));
         }
 
@@ -35,6 +34,19 @@ namespace UnitTestProject
 
         [TestMethod]
         public void updateLocationTest()
+        {
+            Repository repository = Repository.newInstance();
+            Location location = new Location();
+            location.LocationID = Guid.Empty.ToString();
+            location.LocationPID = "111";
+            location.LocationName = "111";
+            location.LocationFullName = "111";
+            location.LocationCode = "111";
+            Assert.IsTrue(repository.updateLocation(location));
+        }
+
+        [TestMethod]
+        public void updateLocationIDTest()
         {
             Repository repository = Repository.newInstance();
             Location location = new Location();

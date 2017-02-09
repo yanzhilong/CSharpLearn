@@ -9,6 +9,7 @@ using CrRepairs.model;
 using System.Data;
 using System.Collections;
 using System.Diagnostics;
+using CrRepairs.util;
 
 namespace xyz.ibean.data.dao
 {
@@ -30,8 +31,7 @@ namespace xyz.ibean.data.dao
                 "'" + location.LocationName + "'," + 
                 "'" + location.LocationCode + "'," + 
                 "'" + location.LocationFullName + "'," +
-                "'" + location.LocationLevel + "'," +
-                "'" + location.LocationPath + "'" +
+                "'" + location.LocationLevel + "'" +
                 ")";
             MySqlConnection MySqlconn = mySqlModule.openConnection();
             MySqlCommand cmd = new MySqlCommand(sql, MySqlconn);
@@ -72,7 +72,7 @@ namespace xyz.ibean.data.dao
             return false;
         }
 
-        public List<Location> getLocationById(string locationId)
+        public Location getLocationById(string locationId)
         {
             throw new NotImplementedException();
         }
@@ -97,7 +97,6 @@ namespace xyz.ibean.data.dao
                         location.LocationCode = sdr.GetString(3);
                         location.LocationFullName = sdr.GetString(4);
                         location.LocationLevel = sdr.GetInt32(5);
-                        location.LocationPath = sdr.GetString(6);
                         locations.Add(location);
                     }
                     sdr.Close();
@@ -116,24 +115,94 @@ namespace xyz.ibean.data.dao
 
         public List<Location> getLocationsById(string locationId)
         {
-            throw new NotImplementedException();
+            List<Location> locations = new List<Location>();
+            String sql = "select * from location where LocationPID = " + "'" + locationId + "'";
+            MySqlConnection MySqlconn = mySqlModule.openConnection();
+            try
+            {
+                if (MySqlconn.State == ConnectionState.Open)
+                {
+                    MySqlCommand cmd = new MySqlCommand(sql, MySqlconn);
+                    MySqlDataReader sdr = cmd.ExecuteReader();
+                    while (sdr.Read())
+                    {
+                        Location location = new Location();
+                        location.LocationID = sdr.GetString(0);
+                        location.LocationPID = sdr.GetString(1);
+                        location.LocationName = sdr.GetString(2);
+                        location.LocationCode = sdr.GetString(3);
+                        location.LocationFullName = sdr.GetString(4);
+                        location.LocationLevel = sdr.GetInt32(5);
+                        locations.Add(location);
+                    }
+                    sdr.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+            }
+            finally
+            {
+                mySqlModule.closeConnection(MySqlconn);
+            }
+            return locations;
         }
 
         public List<Location> getLocationsByQuery(string locationstr)
         {
-            throw new NotImplementedException();
+            String sql = "";
+            //判断是中文还是英文 
+            if (StringUtil.containCN(locationstr))
+            {
+                sql = "select * from location where LocationFullName like " + "'%" + locationstr + "%'";
+            }
+            else
+            {
+                sql = "select * from location where LocationCode like " + "'%" + locationstr + "%'";
+            }
+            List<Location> locations = new List<Location>();
+            MySqlConnection MySqlconn = mySqlModule.openConnection();
+            try
+            {
+                if (MySqlconn.State == ConnectionState.Open)
+                {
+                    MySqlCommand cmd = new MySqlCommand(sql, MySqlconn);
+                    MySqlDataReader sdr = cmd.ExecuteReader();
+                    while (sdr.Read())
+                    {
+                        Location location = new Location();
+                        location.LocationID = sdr.GetString(0);
+                        location.LocationPID = sdr.GetString(1);
+                        location.LocationName = sdr.GetString(2);
+                        location.LocationCode = sdr.GetString(3);
+                        location.LocationFullName = sdr.GetString(4);
+                        location.LocationLevel = sdr.GetInt32(5);
+                        locations.Add(location);
+                    }
+                    sdr.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+            }
+            finally
+            {
+                mySqlModule.closeConnection(MySqlconn);
+            }
+            return locations;
         }
 
         public bool updateLocation(Location location)
         {
-            String sql = "update location set" +
+            String sql = "update location set " +
                 "LocationPID = " + "'" + location.LocationPID + "'," +
                 "LocationName = " + "'" + location.LocationName + "'," +
                 "LocationCode = " + "'" + location.LocationCode + "'," +
                 "LocationFullName = " + "'" + location.LocationFullName + "'," +
-                "LocationLevel = " + "'" + location.LocationLevel + "'," +
-                "LocationPath = " + "'" + location.LocationPath +
-                "')";
+                "LocationLevel = " + "'" + location.LocationLevel + "'" +
+                "where LocationID = " + "'" + location.LocationID + "'" ;
 
             MySqlConnection MySqlconn = mySqlModule.openConnection();
             MySqlCommand cmd = new MySqlCommand(sql, MySqlconn);
@@ -152,6 +221,35 @@ namespace xyz.ibean.data.dao
                 mySqlModule.closeConnection(MySqlconn);
             }
             return false;
+        }
+
+        public bool updateLocations(List<Location> locations)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach(Location location in locations)
+            {
+                sb.Append("'" + location.LocationID + "'" + ",");
+            }
+            //此处去掉拼接处最后一个","
+            string locationids = sb.ToString().Remove(sb.ToString().Length - 1);
+            String sql = string.Format("select * from location where LocationID in ({0})", locationids);
+
+            DataTable dt = mySqlModule.queryDataTable(sql);
+            //循环修改值
+            foreach (Location location in locations)
+            {
+                for(int j = 0; j < dt.Rows.Count; j++)
+                {
+                    if(dt.Rows[j]["LocationID"].ToString() == location.LocationID)
+                    {
+                        dt.Rows[j]["LocationName"] = location.LocationName;
+                        dt.Rows[j]["LocationFullName"] = location.LocationFullName;
+                        dt.Rows[j]["LocationCode"] = location.LocationCode;
+                    }
+                }
+            }
+            int i = mySqlModule.update(sql, dt);
+            return i > 0 ? true : false;
         }
     }
 }

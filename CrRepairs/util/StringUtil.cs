@@ -2,12 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace CrRepairs.util
 {
     public class StringUtil
     {
+
+        /// <summary>
+        /// 判断一个字符串是否包含中文
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static Boolean containCN(string str)
+        {
+            Regex reg = new Regex(@"[\u4e00-\u9fa5]");//正则表达式
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (reg.IsMatch(str[i].ToString())){
+                    return true;
+                }
+            }
+            return false;
+        }
+
 
         /// <summary>
         /// 在指定的字符串列表CnStr中检索符合拼音索引字符串
