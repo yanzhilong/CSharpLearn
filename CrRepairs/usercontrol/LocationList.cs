@@ -253,8 +253,8 @@ namespace CrRepairs
             
             //查找当前地址下面的所有Location
             Repository repository = Repository.newInstance();
-            List<Location> locations = repository.getLocationsById(updatelocation.LocationID);
-            locations.Add(updatelocation);
+            List<Location> locations = repository.getLocations();
+            //locations.Add(updatelocation);
             LocationManager locationManager = new LocationManager();
             locationManager.initLocations(locations);
             List<Location> updateLocations = locationManager.updateLocationName(updatelocation.LocationID, updatelocation.LocationName);
@@ -508,14 +508,15 @@ namespace CrRepairs
             }
             if(location != null)
             {
+                Location locationP = (Location)locationsTB[location.LocationPID];
+                location.LocationName = locationName;
+                location.LocationFullName = locationP == null ? location.LocationName : locationP.LocationFullName + "-" + location.LocationName;
+                location.LocationCode = locationP == null ? StringUtil.GetSpellCode(location.LocationName) : locationP.LocationCode + "-" + StringUtil.GetSpellCode(location.LocationName);
+                location.LocationLevel = locationP == null ? 0 : locationP.LocationLevel + 1;
+                updateNameLocations.Add(location);
                 updateLocationFullNameAndLocationCode(hashtable);
-                //Location locationP = (Location)locationsTB[location.LocationPID];
-                //location.LocationName = locationName;
-                //location.LocationFullName = locationP == null ? "" :locationP.LocationFullName + "-" + location.LocationName;
-                //location.LocationCode = locationP == null ? "" : locationP.LocationCode + "-" + StringUtil.GetSpellCode(location.LocationName);
-                //location.LocationLevel = locationP == null ? 0 : locationP.LocationLevel + 1;
-                //updateNameLocations.Add(location);
-            }else
+            }
+            else
             {
                 return null;
             }
