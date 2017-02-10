@@ -464,6 +464,11 @@ namespace CrRepairs
             {
                 //查找当前locationID的目录树ID列表
                 string[] locationtree = getLocationIDTree(location.LocationID);
+                if(locationtree == null)
+                {
+                    //一个断的分支，不添加
+                    continue;
+                }
                 //添加到位置树中
                 addLocationTree(LocationsTVTB, locationtree);
             }
@@ -499,14 +504,18 @@ namespace CrRepairs
         public List<Location> updateLocationName(string locationID, string locationName)
         {
             updateNameLocations = new List<Location>();
-            //遍历更新
-            Hashtable hashtable = findLocationTB(LocationsTVTB, locationID);
+            //查找当前locationID的目录树ID列表
+            string[] locationtree = getLocationIDTree(locationID);
+            //查找当前目录树
+
+            Hashtable hashtable = findLocationTB(locationtree,LocationsTVTB);
             Location location = null;
             foreach (DictionaryEntry dict in hashtable)
             {
                 location = (Location)locationsTB[(string)dict.Key];
             }
-            if(location != null)
+            //遍历更新
+            if (location != null)
             {
                 Location locationP = (Location)locationsTB[location.LocationPID];
                 location.LocationName = locationName;
@@ -537,24 +546,46 @@ namespace CrRepairs
             return updateNameLocations;
         }
 
-        private Hashtable findLocationTB(Hashtable locationsTB,string LocationID)
+
+
+        private Hashtable findLocationTB(string[] locationtree,Hashtable locationsTB)
         {
-            Hashtable hashtable = null;
-            //遍历更新
-            foreach (DictionaryEntry dict in locationsTB)
+            if(locationtree.Length == 0)
             {
-                string locationID = (string)dict.Key;
-                if(locationID == LocationID)
-                {
-                    hashtable = new Hashtable();
-                    hashtable.Add(dict.Key,dict.Value);
-                    break;
-                }else
-                {
-                    return findLocationTB((Hashtable)dict.Value, LocationID);
-                }
+                throw new ArgumentOutOfRangeException("地址树至少需要一个节点");
             }
+            Hashtable tmphashtable = (Hashtable)locationsTB[locationtree[0]];
+            if(locationtree.Length > 1)
+            {
+                //去除当前父节点，继续遍历子节点
+                string[] strarray = new string[locationtree.Length - 1];
+                Array.Copy(locationtree, 1, strarray, 0, strarray.Length);
+                return findLocationTB(strarray, tmphashtable);
+            }
+            Hashtable hashtable = new Hashtable();
+            hashtable.Add(locationtree[0], tmphashtable);
             return hashtable;
+
+            //Hashtable hashtable = null;
+            ////遍历更新
+            //foreach (DictionaryEntry dict in locationsTB)
+            //{
+            //    string locationID = (string)dict.Key;
+            //    if(locationID == LocationID)
+            //    {
+            //        hashtable = new Hashtable();
+            //        hashtable.Add(dict.Key,dict.Value);
+            //        break;
+            //    }else
+            //    {
+            //        hashtable = findLocationTB((Hashtable)dict.Value, LocationID);
+            //        if (hashtable != null)
+            //        {
+            //            break;
+            //        }
+            //    }
+            //}
+            //return hashtable;
         }
 
 
@@ -592,6 +623,11 @@ namespace CrRepairs
             {
                 list.Add(locationId);
                 locationId = (string)LocationIDTB[locationId];
+                if(locationId == null)
+                {
+                    //这个分支断了，不添加
+                    return null;
+                }
             } while (!locationId.Equals(Guid.Empty.ToString()));
             string[] array = list.ToArray();
             //倒序，父级在前面
