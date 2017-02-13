@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CrRepairs.usercontrol;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +23,9 @@ namespace CrRepairs
         {
             treeView1.HideSelection = false;
 
+            TreeNode tn0 = treeView1.Nodes.Add("基础数据管理");
+            tn0.Nodes.Add(new TreeNode("公司管理"));
+            
             TreeNode tn1 = treeView1.Nodes.Add("报修模块");
             TreeNode Ntn1 = new TreeNode("位置管理");
             TreeNode Ntn2 = new TreeNode("设备点管理");
@@ -44,14 +49,34 @@ namespace CrRepairs
         {
             if(e.Node.Text == "位置管理")
             {
+                this.panel1.Controls.Clear();
                 var c = new LocationList();
                 this.panel1.Controls.Add(c);
-            }else
+            }else if(e.Node.Text == "公司管理")
             {
                 this.panel1.Controls.Clear();
+                var c = new CRUD();
+                this.panel1.Controls.Add(c);
+
+                Hashtable hashtable = new Hashtable();
+                hashtable.Add("CompanyID", "公司编号");
+                hashtable.Add("CompanyName", "公司名称");
+
+                CRUDProperties properties = new CRUDProperties();
+                properties.Titles = hashtable;
+
+                Hashtable adds = new Hashtable();
+                adds.Add("姓名:", "");
+                adds.Add("级别:", "");
+                adds.Add("年龄:", "");
+
+                properties.Adds = adds;
+
+                c.loadData("SELECT * FROM location.company", properties);
             }
-
-
+            else{
+                this.panel1.Controls.Clear();
+            }
         }
     }
 }
