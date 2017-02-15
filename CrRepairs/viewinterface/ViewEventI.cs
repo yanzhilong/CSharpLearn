@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CrRepairs.viewinterface
 {
-    public abstract class ViewExitI
+    public interface ViewEventI
     {
-        void exit() { }
+        void exit();
     }
 }

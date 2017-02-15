@@ -11,14 +11,16 @@ using System.Collections;
 
 namespace CrRepairs.usercontrol
 {
-    public partial class CRUDLableTextBox : UserControl,CRUDItemVIewI
+    public partial class CRUDLableCombo : UserControl, CRUDItemVIewI
     {
-        public CRUDLableTextBox(string lablestr,string value,bool enable)
+        public CRUDLableCombo(string lablestr,string[] values)
         {
             InitializeComponent();
             this.label1.Text = lablestr;
-            this.textBox1.Text = value;
-            this.textBox1.Enabled = enable;
+            foreach(string str in values)
+            {
+                this.comboBox1.Items.Add(str);
+            }
         }
 
         public string getLable()
@@ -28,7 +30,7 @@ namespace CrRepairs.usercontrol
 
         public string getValue()
         {
-            return this.textBox1.Text;
+            return this.comboBox1.Text;
         }
 
     }

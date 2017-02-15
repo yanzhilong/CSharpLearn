@@ -1,6 +1,6 @@
 ﻿namespace CrRepairs.usercontrol
 {
-    partial class CRUDItems
+    partial class CrudView
     {
         /// <summary> 
         /// Required designer variable.
@@ -59,15 +59,16 @@
             this.submit.TabIndex = 2;
             this.submit.Text = "确定";
             this.submit.UseVisualStyleBackColor = true;
+            this.submit.Click += new System.EventHandler(this.submit_Click);
             // 
-            // CRUDItems
+            // CrudView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.submit);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Name = "CRUDItems";
+            this.Name = "CrudView";
             this.Size = new System.Drawing.Size(446, 370);
             this.ResumeLayout(false);
 

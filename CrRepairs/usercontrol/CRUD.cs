@@ -9,112 +9,101 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
 using CrRepairs.viewinterface;
+using CrRepairs.crudmoudle;
+using static CrRepairs.usercontrol.CRUDDataGridView;
 
 namespace CrRepairs.usercontrol
 {
-    public partial class CRUD : UserControl,ViewExitI
+    public partial class CRUD : UserControl,ViewEventI, RowSelect
     {
-        private CRUDProperties properties;
+        private CRUDBase crudBase;
         private CRUDDataGridView cruddatagridview;
-        private string sql;
-        public CRUD()
+        public CRUD(CRUDBase crudBase)
         {
             InitializeComponent();
+            this.crudBase = crudBase;
+            loadData(crudBase);
         }
 
         public void exit()
         {
-            loadData(sql,properties);
+            loadData(crudBase);
         }
 
-        public void loadData(string sql, CRUDProperties properties)
+        private void loadData(CRUDBase crudBase)
         {
-            this.sql = sql;
-            this.properties = properties;
+            
             this.panel1.Controls.Clear();
             cruddatagridview = new CRUDDataGridView();
             this.panel1.Controls.Add(cruddatagridview);
-            cruddatagridview.loadData(sql,this.properties.Titles);
+            cruddatagridview.loadData(crudBase.Sql, crudBase.Titles);
+            cruddatagridview.Rowsele = this;
             this.panel2.Show();
         }
 
         private void add_Click(object sender, EventArgs e)
         {
             this.panel1.Controls.Clear();
-            var c = new CRUDItems();
+            var c = new CrudView(crudBase.CrudEvent,this, CrudView.ADD);
             this.panel1.Controls.Add(c);
-
-            c.addItems(this.properties.Adds,this);
-            
+            c.addItems(this.crudBase.Adds);
             this.panel2.Hide();
         }
-    }
 
-    public class CRUDProperties
-    {
-        private Hashtable titles;//数据的列名和显示
-        private Hashtable updates;//要更新数据的时候允许更改的字段列表
-        private Hashtable adds;//要添加数据的时候允许增加的数据列表
-        private CRUDEvent crudEvent;//按钮事件
-
-        public Hashtable Titles
+        public void rowSelect(Hashtable select)
         {
-            get
+            if(select.Keys.Count > 0)
             {
-                return titles;
-            }
-
-            set
+                update.Enabled = true;
+                delete.Enabled = true;
+            }else
             {
-                titles = value;
+                update.Enabled = false;
+                delete.Enabled = false;
             }
+            
         }
 
-        public Hashtable Updates
+        private void update_Click(object sender, EventArgs e)
         {
-            get
+            Hashtable hashtable = cruddatagridview.getCurrentRowData();
+            if(hashtable.Keys.Count == 0)
             {
-                return updates;
+                MessageBox.Show("当前没有选中");
             }
 
-            set
+            this.panel1.Controls.Clear();
+            var c = new CrudView(crudBase.CrudEvent, this,CrudView.UPDATE);
+            this.panel1.Controls.Add(c);
+            List<CrudItem> updateCrudItems = this.crudBase.Updates;
+            for(int i = 0; i < updateCrudItems.Count; i++)
             {
-                updates = value;
+                updateCrudItems[i].Value = (string)hashtable[(string)(updateCrudItems[i].Valuekey)];
             }
+            c.addItems(this.crudBase.Updates);
+            this.panel2.Hide();
         }
 
-        public Hashtable Adds
+        private void delete_Click(object sender, EventArgs e)
         {
-            get
+            Hashtable hashtable = cruddatagridview.getCurrentRowData();
+            if (hashtable.Keys.Count == 0)
             {
-                return adds;
+                MessageBox.Show("当前没有选中");
             }
 
-            set
+            if (MessageBox.Show("是否删除当前项！", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                adds = value;
+                crudBase.CrudEvent.delete(hashtable);
+                this.exit();
             }
+            else
+            {
+
+            }
+
+            
         }
-
-        public CRUDEvent CrudEvent
-        {
-            get
-            {
-                return crudEvent;
-            }
-
-            set
-            {
-                crudEvent = value;
-            }
-        }
-    }
-
-    public interface CRUDEvent
-    {
-        void add(string[][] values);//添加数据
-        void update(string[][] source, string[][] updates);//修改数据
-        void delete(string[][] sourde);//删除
     }
     
 }

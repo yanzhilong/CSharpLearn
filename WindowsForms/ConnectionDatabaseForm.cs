@@ -594,6 +594,7 @@ namespace WindowsForm
             idtb.Text = dataGridView1.SelectedCells[0].Value.ToString();
             nametb.Text = dataGridView1.SelectedCells[1].Value.ToString();
             agetb.Text = dataGridView1.SelectedCells[2].Value.ToString();
+            //dataGridView1.SelectedRows[0].Cells[""].Value.ToString();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -1014,6 +1015,11 @@ dataGridView2.CurrentCell.ColumnIndex);
             comboboxColumn.Items.Add("abcd");
             comboboxColumn.Items.Add("abcd");
             comboboxColumn.Items.Add("abcd");
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
