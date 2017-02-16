@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,12 +51,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="config\ApplicationConfig.cs" />
+    <Compile Include="crudmoudle\LocationCRUD.cs" />
     <Compile Include="crudmoudle\CompanyCRUD.cs" />
     <Compile Include="crudmoudle\CRUDBase.cs" />
     <Compile Include="crudmoudle\CRUDEvent.cs" />
     <Compile Include="data\IDataSource.cs" />
     <Compile Include="data\MySqlDataSource.cs" />
     <Compile Include="data\Repository.cs" />
+    <Compile Include="model\Company.cs" />
     <Compile Include="model\MysqlConnection.cs" />
     <Compile Include="usercontrol\CRUD.cs">
       <SubType>UserControl</SubType>
@@ -71,11 +74,29 @@
     </Compile>
     <Compile Include="crudmoudle\CrudItem.cs" />
     <Compile Include="usercontrol\CRUDItemVIewI.cs" />
+    <Compile Include="usercontrol\CRUDLable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="usercontrol\CRUDLable.Designer.cs">
+      <DependentUpon>CRUDLable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\CRUDLableRadioButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="usercontrol\CRUDLableRadioButton.Designer.cs">
+      <DependentUpon>CRUDLableRadioButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="usercontrol\CRUDLableCombo.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="usercontrol\CRUDLableCombo.Designer.cs">
       <DependentUpon>CRUDLableCombo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\CRUDTreeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="usercontrol\CRUDTreeView.Designer.cs">
+      <DependentUpon>CRUDTreeView.cs</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\CrudView.cs">
       <SubType>UserControl</SubType>
@@ -114,8 +135,17 @@
     <EmbeddedResource Include="usercontrol\CRUDDataGridView.resx">
       <DependentUpon>CRUDDataGridView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="usercontrol\CRUDLable.resx">
+      <DependentUpon>CRUDLable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="usercontrol\CRUDLableRadioButton.resx">
+      <DependentUpon>CRUDLableRadioButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="usercontrol\CRUDLableCombo.resx">
       <DependentUpon>CRUDLableCombo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="usercontrol\CRUDTreeView.resx">
+      <DependentUpon>CRUDTreeView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="usercontrol\CrudView.resx">
       <DependentUpon>CrudView.cs</DependentUpon>
@@ -137,6 +167,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -151,7 +182,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="source\navigate-right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="source\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="source\nvigate_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\navigate_right1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -43,27 +43,16 @@ namespace CrRepairs.usercontrol
             return mySqlModule.queryDataTable(sql);
         }
 
-        public void loadData(string sql,Hashtable titles)
+        public void loadData(DataTable dataTable, Hashtable titles)
         {
             this.titles = titles;
-            DataTable datatable = getDataTable(sql);
-
-            foreach (DictionaryEntry dict in titles)
-            {
-                if(dict.Value != null)
-                {
-                    datatable.Columns[(string)dict.Key].ColumnName = (string)dict.Value;
-                }
-                
-            }
-
             //自动列宽
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             //for (int i = 0; i < dataGridView1.ColumnCount; i++)
             //{
             //    dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             //}
-            dataGridView1.DataSource = datatable;
+            dataGridView1.DataSource = dataTable;
             dataGridView1.ReadOnly = true;
         }
 

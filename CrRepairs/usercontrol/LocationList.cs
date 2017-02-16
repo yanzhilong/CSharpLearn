@@ -34,6 +34,7 @@ namespace CrRepairs
             this.Dock = DockStyle.Fill;
             treeView1.Nodes.Clear();
             treeView1.Dock = DockStyle.Left;
+            //不是焦点的时候还可以显示当前显示的支点
             treeView1.HideSelection = false;
             //获取地址列表
             List<Location> locations = repository.getLocations();

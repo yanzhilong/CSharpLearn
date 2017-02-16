@@ -18,6 +18,7 @@ namespace CrRepairs.usercontrol
     {
         private CRUDBase crudBase;
         private CRUDDataGridView cruddatagridview;
+        private CRUDTreeView crudTreeView;
         public CRUD(CRUDBase crudBase)
         {
             InitializeComponent();
@@ -32,12 +33,20 @@ namespace CrRepairs.usercontrol
 
         private void loadData(CRUDBase crudBase)
         {
-            
             this.panel1.Controls.Clear();
-            cruddatagridview = new CRUDDataGridView();
-            this.panel1.Controls.Add(cruddatagridview);
-            cruddatagridview.loadData(crudBase.Sql, crudBase.Titles);
-            cruddatagridview.Rowsele = this;
+            if (crudBase.DisplayType == CRUDBase.GRIDVIEW)
+            {
+                cruddatagridview = new CRUDDataGridView();
+                this.panel1.Controls.Add(cruddatagridview);
+                cruddatagridview.loadData(crudBase.CrudEvent.loadGridViewData(), crudBase.Titles);
+                cruddatagridview.Rowsele = this;
+            }
+            else
+            {
+                crudTreeView = new CRUDTreeView();
+                this.panel1.Controls.Add(crudTreeView);
+                crudTreeView.initTreeView(crudBase.HashtableTree, crudBase.TreeViewNodeTable);
+            }
             this.panel2.Show();
         }
 
@@ -66,6 +75,7 @@ namespace CrRepairs.usercontrol
 
         private void update_Click(object sender, EventArgs e)
         {
+
             Hashtable hashtable = cruddatagridview.getCurrentRowData();
             if(hashtable.Keys.Count == 0)
             {

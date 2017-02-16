@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using xyz.ibean.model;
+using System.Data;
 
 namespace CrRepairs.crudmoudle
 {
@@ -104,7 +105,25 @@ namespace CrRepairs.crudmoudle
             string sql = String.Format(sqlbase,hashtable["CompanyID"]);
             mySqlModule.query(sql);
         }
-        
+
+        public DataTable loadGridViewData()
+        {
+            DataTable datatable = mySqlModule.queryDataTable(this.Sql);
+            foreach (DictionaryEntry dict in this.Titles)
+            {
+                if (dict.Value != null)
+                {
+                    datatable.Columns[(string)dict.Key].ColumnName = (string)dict.Value;
+                }
+            }
+            return datatable;
+        }
+
+        public Hashtable loadTreeViewData()
+        {
+            throw new NotImplementedException();
+        }
+
         public void update(Hashtable hashtable)
         {
             //UPDATE company SET `CompanyName`= 'sdfg444' WHERE `CompanyID`= 'e90c790c-4a12-4f3e-927e-625b5d65e509';

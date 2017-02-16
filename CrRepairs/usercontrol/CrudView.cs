@@ -63,6 +63,15 @@ namespace CrRepairs.usercontrol
                         //Cr crudLableCombo = new CRUDLableCombo(cruditem.Lable, cruditem.Combovalue);
                         //crudLableCombo.Tag = cruditem.Valuekey;
                         break;
+                    case CrudItem.RADIOBUTTON:
+                        CRUDLableRadioButton CRUDLRB = new CRUDLableRadioButton(cruditem.Lable,cruditem.Combovalue);
+                        CRUDLRB.Tag = cruditem.Valuekey;
+                        this.flowLayoutPanel1.Controls.Add(CRUDLRB);
+                        break;
+                    case CrudItem.TIP:
+                        CRUDLable lab = new CRUDLable(cruditem.Lable);
+                        this.flowLayoutPanel1.Controls.Add(lab);
+                        break;
                 }
                 //string lable = (string)dict.Key;
                 //string value = (string)dict.Value;
@@ -83,6 +92,10 @@ namespace CrRepairs.usercontrol
             //判断是否有非空值未填写
             foreach (CrudItem cruditem in crudItems)
             {
+                if(cruditem.ValueType == CrudItem.TIP)
+                {
+                    continue;
+                }
                 string[] itemvalue = getCRUDItemValue(cruditem.Valuekey);
                 if (!cruditem.IsbeNull && itemvalue == null || itemvalue[1] == "")
                 {

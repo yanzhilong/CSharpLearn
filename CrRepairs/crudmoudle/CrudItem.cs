@@ -15,6 +15,8 @@ namespace CrRepairs.usercontrol
         public const int TEXTBOX = 0;//文本框
         public const int COMBOBOX = 1;//下拉列表框
         public const int TREEVIEW = 2;//树型选择框
+        public const int RADIOBUTTON = 3;//单选 
+        public const int TIP = 4;//提示信息 
 
         private string valuekey;//用于获取数据
         private string lable;//显示标签
