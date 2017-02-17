@@ -1,6 +1,6 @@
 ﻿namespace CrRepairs.usercontrol
 {
-    partial class CRUD
+    partial class CrudTable
     {
         /// <summary> 
         /// Required designer variable.

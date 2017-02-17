@@ -17,6 +17,7 @@ namespace CrRepairs.usercontrol
     {
         private TreeViewEvent treeviewEnent;
 
+        private TreeViewNode mTreeviewNode;//节点
         public TreeViewEvent TreeviewEnent
         {
             get
@@ -55,7 +56,7 @@ namespace CrRepairs.usercontrol
             //遍历
             foreach (DictionaryEntry dict in treeViewIdTable)
             {
-                string treeViewNodeKey = (string)treeViewIdTable[dict.Key];
+                string treeViewNodeKey = (string)dict.Key;
                 TreeViewNode treeviewnode = (TreeViewNode)treeViewNodeTable[treeViewNodeKey];
                 TreeNode treenode = treeNodeCollection.Add(treeviewnode.Name);
                 treenode.Tag = treeviewnode;
@@ -65,23 +66,36 @@ namespace CrRepairs.usercontrol
             }
         }
 
+
+        public TreeViewNode getSelectTreeViewNode()
+        {
+            TreeNode treeNode = treeView1.SelectedNode;
+            if(treeNode == null)
+            {
+                return null;
+            }else
+            {
+                return (TreeViewNode)treeNode.Tag;
+            }
+        }
+
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            List<string> treelist = new List<string>();
-            TreeNode treeNode = e.Node;
-            do
-            {
-                treelist.Add(treeNode.Name);
-            } while ((treeNode = treeNode.Parent) != null);
-            string[] array = treelist.ToArray();
-            //倒序，父级在前面
-            Array.Reverse(array);
-            //return array;
+            //List<string> treelist = new List<string>();
+            //TreeNode treeNode = e.Node;
+            ////do
+            ////{
+            ////    treelist.Add(treeNode.Name);
+            ////} while ((treeNode = treeNode.Parent) != null);
+            ////string[] array = treelist.ToArray();
+            //////倒序，父级在前面
+            ////Array.Reverse(array);
+            ////return array;
 
-            if(TreeviewEnent != null)
-            {
-                TreeviewEnent.TreeViewSelect((TreeViewNode)treeNode.Tag);
-            }
+            //if(TreeviewEnent != null)
+            //{
+            //    TreeviewEnent.TreeViewSelect((TreeViewNode)treeNode.Tag);
+            //}
         }
 
         

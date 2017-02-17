@@ -26,6 +26,7 @@ namespace CrRepairs
 
             TreeNode tn0 = treeView1.Nodes.Add("基础数据管理");
             tn0.Nodes.Add(new TreeNode("公司管理"));
+            tn0.Nodes.Add(new TreeNode("项目管理"));
             tn0.Nodes.Add(new TreeNode("地址管理"));
 
             TreeNode tn1 = treeView1.Nodes.Add("报修模块");
@@ -57,18 +58,26 @@ namespace CrRepairs
             }else if(e.Node.Text == "公司管理")
             {
                 this.panel1.Controls.Clear();
-                CRUDBase crudBase = new CompanyCRUD();
-                var c = new CRUD(crudBase);
+                CrudGridViewBase crudBase = new CompanyCRUD();
+                var c = new CrudTable(crudBase);
                 this.panel1.Controls.Add(c);
             }
         else if(e.Node.Text == "地址管理")
             {
                 this.panel1.Controls.Clear();
                 LocationCRUD crudBase = new LocationCRUD();
-        var c = new CRUD(crudBase);
+        var c = new CrudTree(crudBase);
                 this.panel1.Controls.Add(c);
             }
-            else{
+            else if (e.Node.Text == "项目管理")
+            {
+                this.panel1.Controls.Clear();
+                LocationCRUD crudBase = new LocationCRUD();
+                var c = new CrudTree(crudBase);
+                this.panel1.Controls.Add(c);
+            }
+            else
+            {
                 this.panel1.Controls.Clear();
             }
         }

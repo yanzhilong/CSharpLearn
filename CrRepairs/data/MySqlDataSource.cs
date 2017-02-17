@@ -31,7 +31,8 @@ namespace xyz.ibean.data.dao
                 "'" + location.LocationName + "'," + 
                 "'" + location.LocationCode + "'," + 
                 "'" + location.LocationFullName + "'," +
-                "'" + location.LocationLevel + "'" +
+                "'" + location.LocationLevel + "'," +
+                "'" + location.CompanyID + "'" +
                 ")";
             MySqlConnection MySqlconn = mySqlModule.openConnection();
             MySqlCommand cmd = new MySqlCommand(sql, MySqlconn);

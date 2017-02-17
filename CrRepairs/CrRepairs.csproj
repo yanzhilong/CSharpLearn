@@ -51,20 +51,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="config\ApplicationConfig.cs" />
+    <Compile Include="crudmoudle\CrudDataType.cs" />
+    <Compile Include="crudmoudle\CrudTreeViewBase.cs" />
+    <Compile Include="crudmoudle\CrudGridViewBase.cs" />
     <Compile Include="crudmoudle\LocationCRUD.cs" />
     <Compile Include="crudmoudle\CompanyCRUD.cs" />
     <Compile Include="crudmoudle\CRUDBase.cs" />
     <Compile Include="crudmoudle\CRUDEvent.cs" />
+    <Compile Include="crudmoudle\LocationManager.cs" />
+    <Compile Include="crudmoudle\TreeViewManager.cs" />
+    <Compile Include="crudmoudle\TreeViewNode.cs" />
     <Compile Include="data\IDataSource.cs" />
     <Compile Include="data\MySqlDataSource.cs" />
     <Compile Include="data\Repository.cs" />
     <Compile Include="model\Company.cs" />
     <Compile Include="model\MysqlConnection.cs" />
-    <Compile Include="usercontrol\CRUD.cs">
+    <Compile Include="usercontrol\CrudTable.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="usercontrol\CRUD.Designer.cs">
-      <DependentUpon>CRUD.cs</DependentUpon>
+    <Compile Include="usercontrol\CrudTable.Designer.cs">
+      <DependentUpon>CrudTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\CrudTree.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="usercontrol\CrudTree.Designer.cs">
+      <DependentUpon>CrudTree.cs</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\CRUDDataGridView.cs">
       <SubType>UserControl</SubType>
@@ -129,8 +141,11 @@
     <Compile Include="util\StringUtil.cs" />
     <Compile Include="util\TreeViewUtil.cs" />
     <Compile Include="viewinterface\ViewEventI.cs" />
-    <EmbeddedResource Include="usercontrol\CRUD.resx">
-      <DependentUpon>CRUD.cs</DependentUpon>
+    <EmbeddedResource Include="usercontrol\CrudTable.resx">
+      <DependentUpon>CrudTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="usercontrol\CrudTree.resx">
+      <DependentUpon>CrudTree.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="usercontrol\CRUDDataGridView.resx">
       <DependentUpon>CRUDDataGridView.cs</DependentUpon>

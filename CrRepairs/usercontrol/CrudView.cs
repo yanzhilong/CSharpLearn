@@ -20,14 +20,11 @@ namespace CrRepairs.usercontrol
 
         private int OperaterType;
         private ViewEventI ve;
-        private CRUDEvent crudEvent;
         private List<CrudItem> crudItems;//要添加或修改的字段
-        public CrudView(CRUDEvent crudEvent, ViewEventI i,int operatertype)
+        public CrudView(ViewEventI i)
         {
             InitializeComponent();
             this.ve = (ViewEventI)i;
-            this.crudEvent = crudEvent;
-            this.OperaterType = operatertype;
         }
 
 
@@ -96,51 +93,24 @@ namespace CrRepairs.usercontrol
                 {
                     continue;
                 }
-                string[] itemvalue = getCRUDItemValue(cruditem.Valuekey);
-                if (!cruditem.IsbeNull && itemvalue == null || itemvalue[1] == "")
+                string itemvalue = getCRUDItemValue(cruditem.Valuekey);
+                if (!cruditem.IsbeNull && itemvalue == null || itemvalue == "")
                 {
                     if(itemvalue != null && itemvalue.Length > 1)
                     {
-                        MessageBox.Show(itemvalue[1] + "不能为空");
+                        MessageBox.Show(cruditem.Valuekey + "不能为空");
                     }else
                     {
                         MessageBox.Show("数据不能为空!");
                     }
                     return;
                 }
-                result.Add(itemvalue[0], itemvalue[1]);
-                //switch (cruditem.ValueType)
-                //{
-                //    case CrudItem.TEXTBOX:
-                //        CRUDLableTextBox crudTextBox = new CRUDLableTextBox(cruditem.Lable, cruditem.Value);
-                //        crudTextBox.Tag = cruditem.Valuekey;
-                //        this.flowLayoutPanel1.Controls.Add(crudTextBox);
-                //        break;
-                //    case CrudItem.COMBOBOX:
-                //        CRUDLableCombo crudLableCombo = new CRUDLableCombo(cruditem.Lable, cruditem.Combovalue);
-                //        crudLableCombo.Tag = cruditem.Valuekey;
-                //        this.flowLayoutPanel1.Controls.Add(crudLableCombo);
-                //        break;
-                //    case CrudItem.TREEVIEW:
-                //        //Cr crudLableCombo = new CRUDLableCombo(cruditem.Lable, cruditem.Combovalue);
-                //        //crudLableCombo.Tag = cruditem.Valuekey;
-                //        break;
-                //}
-                //string lable = (string)dict.Key;
-                //string value = (string)dict.Value;
-                //CRUDLableTextBox crudltb = new CRUDLableTextBox(lable, value);
-                //this.flowLayoutPanel1.Controls.Add(crudltb);
+                else
+                {
+                    cruditem.Value = itemvalue;
+                }
             }
-
-            if(OperaterType == ADD)
-            {
-                crudEvent.add(result);
-            }
-            else
-            {
-                crudEvent.update(result);
-            }
-            ve.exit();
+            ve.submit(crudItems);
         }
 
         /// <summary>
@@ -148,7 +118,7 @@ namespace CrRepairs.usercontrol
         /// </summary>
         /// <param name="key">指定控件的TAG</param>
         /// <returns>返回数组[key,value]</returns>
-        private string[] getCRUDItemValue(string key)
+        private string getCRUDItemValue(string key)
         {
             foreach (Control control in this.flowLayoutPanel1.Controls)
             {
@@ -156,7 +126,7 @@ namespace CrRepairs.usercontrol
                 if(ckey == key)
                 {
                     CRUDItemVIewI crudItemView = (CRUDItemVIewI)control;
-                    return new string[] { ckey,crudItemView.getValue() };
+                    return crudItemView.getValue();
                 }
             }
             return null;

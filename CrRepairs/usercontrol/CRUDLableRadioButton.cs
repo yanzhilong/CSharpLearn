@@ -19,6 +19,7 @@ namespace CrRepairs.usercontrol
             InitializeComponent();
             this.label1.Text = lablestr;
             radioButton1.Text = values[0];
+            radioButton1.Checked = true;
             radioButton2.Text = values[1];
         }
 
@@ -29,7 +30,7 @@ namespace CrRepairs.usercontrol
 
         public string getValue()
         {
-            if (radioButton1.IsAccessible)
+            if (radioButton1.Checked)
             {
                 return radioButton1.Text;
             }else

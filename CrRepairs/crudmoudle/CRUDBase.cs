@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CrRepairs.crudmoudle
 {
-    public class CRUDBase
+    public abstract class CRUDBase
     {
         public const int GRIDVIEW = 0;//显示表格数据
         public const int TREEVIEW = 1;//显示目录树数据
@@ -22,7 +22,11 @@ namespace CrRepairs.crudmoudle
         private List<CrudItem> adds;//要添加数据的时候允许增加的数据列表
         private CRUDEvent crudEvent;//按钮事件
         private TreeViewEvent treeViewEvent;//树事件
+        
 
+        public abstract CRUDBase refreshData();
+
+        
         public Hashtable Titles
         {
             get

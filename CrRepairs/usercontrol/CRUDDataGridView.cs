@@ -15,9 +15,8 @@ namespace CrRepairs.usercontrol
 {
     public partial class CRUDDataGridView : UserControl
     {
-        private Hashtable titles;
-        private MySqlModule mySqlModule;
         private RowSelect rowsele;
+        private DataTable MdataTable;
 
         public RowSelect Rowsele
         {
@@ -35,23 +34,14 @@ namespace CrRepairs.usercontrol
         public CRUDDataGridView()
         {
             InitializeComponent();
-            mySqlModule = new MySqlModule();
         }
 
-        private DataTable getDataTable(string sql)
-        {
-            return mySqlModule.queryDataTable(sql);
-        }
 
-        public void loadData(DataTable dataTable, Hashtable titles)
+        public void loadData(DataTable dataTable)
         {
-            this.titles = titles;
             //自动列宽
+            MdataTable = dataTable;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            //for (int i = 0; i < dataGridView1.ColumnCount; i++)
-            //{
-            //    dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            //}
             dataGridView1.DataSource = dataTable;
             dataGridView1.ReadOnly = true;
         }
@@ -63,12 +53,12 @@ namespace CrRepairs.usercontrol
                 return;
             }
             Hashtable hashtable = new Hashtable();
-            foreach (DictionaryEntry dict in titles)
-            {
-                string key = (string)dict.Key;
-                string value = dataGridView1.SelectedRows[0].Cells[(string)dict.Value].Value.ToString();
-                hashtable.Add(key,value);
-            }
+            //foreach (DictionaryEntry dict in titles)
+            //{
+            //    string key = (string)dict.Key;
+            //    string value = dataGridView1.SelectedRows[0].Cells[(string)dict.Value].Value.ToString();
+            //    hashtable.Add(key,value);
+            //}
             //idtb.Text = dataGridView1.SelectedCells[0].Value.ToString();
             //nametb.Text = dataGridView1.SelectedCells[1].Value.ToString();
             //agetb.Text = dataGridView1.SelectedCells[2].Value.ToString();
@@ -80,12 +70,18 @@ namespace CrRepairs.usercontrol
         {
             //dataGridView1.CurrentRow.Index;
             Hashtable hashtable = new Hashtable();
-            foreach (DictionaryEntry dict in titles)
+            foreach (DataColumn dc in MdataTable.Columns)
             {
-                string key = (string)dict.Key;
-                string value = dataGridView1.CurrentRow.Cells[(string)dict.Value].Value.ToString();
-                hashtable.Add(key, value);
+                string columName =  dc.ColumnName;
+                string value = dataGridView1.CurrentRow.Cells[columName].Value.ToString();
+                hashtable.Add(columName, value);
             }
+            //foreach (DictionaryEntry dict in titles)
+            //{
+            //    string key = (string)dict.Key;
+            //    string value = dataGridView1.CurrentRow.Cells[(string)dict.Value].Value.ToString();
+            //    hashtable.Add(key, value);
+            //}
             return hashtable;
         }
 
