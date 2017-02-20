@@ -56,5 +56,9 @@ namespace CrRepairs.crudmoudle
         /// <returns></returns>
         public abstract Hashtable getTreeViewNode();
 
+        /// <summary>
+        /// 刷新数据
+        /// </summary>
+        public abstract void refreshData();
     }
 }

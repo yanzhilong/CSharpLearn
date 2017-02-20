@@ -113,25 +113,6 @@ namespace CrRepairs.crudmoudle
         }
 
 
-        /// <summary>
-        /// 将指定地址树添加到TreeNodeCollection中
-        /// </summary>
-        /// <param name="treeNodeCollection"></param>
-        /// <param name="locationTB"></param>
-        public void addTreeNode(TreeNodeCollection treeNodeCollection, Hashtable locationTB)
-        {
-            //遍历
-            foreach (DictionaryEntry dict in locationTB)
-            {
-                Location location = (Location)LocationsTB[dict.Key];
-                TreeNode treenode = treeNodeCollection.Add(location.LocationName);
-                treenode.Tag = location;//将Location添加到TAG中
-                Hashtable tmpHashtable = (Hashtable)dict.Value;
-                //递归将子地址树添加到TreeNodeCollection的子集合中
-                addTreeNode(treenode.Nodes, tmpHashtable);
-            }
-        }
-
         private List<Location> updateNameLocations;//更新名字
         /// <summary>
         /// 更新Location名字,同时更改子级的FullName和LocationCode
@@ -167,20 +148,6 @@ namespace CrRepairs.crudmoudle
             {
                 return null;
             }
-
-            //foreach (DictionaryEntry dict in LocationsTVTB)
-            //{
-
-            //    Location location = (Location)LocationsTB[dict.Key];
-            //    Location locationP = (Location)LocationsTB[location.LocationPID];
-            //    location.LocationFullName = locationP.LocationFullName + "-" + location.LocationName;
-            //    location.LocationCode = locationP.LocationCode + "-" + StringUtil.GetSpellCode(location.LocationName);
-            //    location.LocationLevel = locationP.LocationLevel + 1;
-            //    updateNameLocations.Add(location);
-            //    //递归
-            //    Hashtable hashtable = (Hashtable)dict.Value;
-            //    updateLocationFullNameAndLocationCode(hashtable);
-            //}
             return updateNameLocations;
         }
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CrRepairs.crudmoudle
 {
@@ -12,6 +13,43 @@ namespace CrRepairs.crudmoudle
 
         Hashtable treeViewID;//保存树ID
         Hashtable treeViewIDAndTreeViewNode;//保存树ID
+
+        private static Hashtable NodesStatus = new Hashtable();//保存是否展开的节点状态
+        private static String SelectNodeFullPath = String.Empty; //保存选中的节点
+        #region 状态保持方法
+        public void GetTreeNodesStatus(TreeNodeCollection nodes)
+        {
+            foreach (TreeNode node in nodes)
+            {
+                if (node.IsExpanded)
+                    NodesStatus[node.FullPath] = true;
+                else
+                    NodesStatus.Remove(node.FullPath);
+                if (node.IsSelected)
+                    SelectNodeFullPath = node.FullPath;
+                GetTreeNodesStatus(node.Nodes);
+            }
+        }
+        /// <summary>
+        /// 树状态恢复
+        /// </summary>
+        /// <param name="nodes"></param>
+        /// <returns></returns>
+        public TreeNode SetTreeNodesStatus(TreeNodeCollection nodes)
+        {
+            TreeNode selectTreeNode = null;
+            foreach (TreeNode node in nodes)
+            {
+                if (NodesStatus[node.FullPath] != null)
+                    node.Expand();
+                if (node.FullPath == SelectNodeFullPath)
+                    selectTreeNode = node;
+                SetTreeNodesStatus(node.Nodes);
+            }
+            return selectTreeNode;
+        }
+        #endregion
+
 
         public Hashtable TreeViewID
         {

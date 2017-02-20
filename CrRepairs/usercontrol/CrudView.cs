@@ -18,7 +18,6 @@ namespace CrRepairs.usercontrol
         public const int ADD = 0;
         public const int UPDATE = 1;
 
-        private int OperaterType;
         private ViewEventI ve;
         private List<CrudItem> crudItems;//要添加或修改的字段
         public CrudView(ViewEventI i)
@@ -27,17 +26,6 @@ namespace CrRepairs.usercontrol
             this.ve = (ViewEventI)i;
         }
 
-
-        //public void addItems(Hashtable hashtable)
-        //{
-        //    foreach (DictionaryEntry dict in hashtable)
-        //    {
-        //        string lable = (string)dict.Key;
-        //        string value = (string)dict.Value;
-        //        CRUDLableTextBox crudltb = new CRUDLableTextBox(lable, value);
-        //        this.flowLayoutPanel1.Controls.Add(crudltb);
-        //    }
-        //}
 
         public void addItems(List<CrudItem> crudItems)
         {
@@ -70,10 +58,6 @@ namespace CrRepairs.usercontrol
                         this.flowLayoutPanel1.Controls.Add(lab);
                         break;
                 }
-                //string lable = (string)dict.Key;
-                //string value = (string)dict.Value;
-                //CRUDLableTextBox crudltb = new CRUDLableTextBox(lable, value);
-                //this.flowLayoutPanel1.Controls.Add(crudltb);
             }
         }
 
@@ -96,13 +80,7 @@ namespace CrRepairs.usercontrol
                 string itemvalue = getCRUDItemValue(cruditem.Valuekey);
                 if (!cruditem.IsbeNull && itemvalue == null || itemvalue == "")
                 {
-                    if(itemvalue != null && itemvalue.Length > 1)
-                    {
-                        MessageBox.Show(cruditem.Valuekey + "不能为空");
-                    }else
-                    {
-                        MessageBox.Show("数据不能为空!");
-                    }
+                    MessageBox.Show(cruditem.Lable + "不能为空");
                     return;
                 }
                 else
@@ -112,7 +90,6 @@ namespace CrRepairs.usercontrol
             }
             ve.submit(crudItems);
         }
-
         /// <summary>
         /// 获得控件的值
         /// </summary>
@@ -131,6 +108,5 @@ namespace CrRepairs.usercontrol
             }
             return null;
         }
-
     }
 }

@@ -30,7 +30,6 @@ namespace CrRepairs
             tn0.Nodes.Add(new TreeNode("地址管理"));
 
             TreeNode tn1 = treeView1.Nodes.Add("报修模块");
-            TreeNode Ntn1 = new TreeNode("位置管理");
             TreeNode Ntn2 = new TreeNode("设备点管理");
             TreeNode Ntn3 = new TreeNode("报修位置管理");
             TreeNode Ntn4 = new TreeNode("故障描述管理");
@@ -38,7 +37,6 @@ namespace CrRepairs
             TreeNode Ntn6 = new TreeNode("报修申请");
             TreeNode Ntn7 = new TreeNode("报修列表管理");
 
-            tn1.Nodes.Add(Ntn1);
             tn1.Nodes.Add(Ntn2);
             tn1.Nodes.Add(Ntn3);
             tn1.Nodes.Add(Ntn4);
@@ -50,12 +48,7 @@ namespace CrRepairs
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if(e.Node.Text == "位置管理")
-            {
-                this.panel1.Controls.Clear();
-                var c = new LocationList();
-                this.panel1.Controls.Add(c);
-            }else if(e.Node.Text == "公司管理")
+           if(e.Node.Text == "公司管理")
             {
                 this.panel1.Controls.Clear();
                 CrudGridViewBase crudBase = new CompanyCRUD();

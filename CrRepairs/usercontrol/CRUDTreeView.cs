@@ -42,7 +42,17 @@ namespace CrRepairs.usercontrol
         /// <param name="hashtable"></param>
         public void initTreeView(Hashtable treeViewIdTable,Hashtable treeViewNodeTable)
         {
+            treeView1.Nodes.Clear();//先清空
             addTreeNode(treeView1.Nodes, treeViewIdTable, treeViewNodeTable);
+        }
+
+        /// <summary>
+        /// 获得当前的树
+        /// </summary>
+        /// <returns></returns>
+        public TreeView getTreeView()
+        {
+            return treeView1;
         }
 
 

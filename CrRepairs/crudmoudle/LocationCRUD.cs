@@ -12,6 +12,7 @@ using xyz.ibean.data;
 using CrRepairs.model;
 using MySql.Data.MySqlClient;
 using CrRepairs.util;
+using System.Windows.Forms;
 
 namespace CrRepairs.crudmoudle
 {
@@ -32,24 +33,9 @@ namespace CrRepairs.crudmoudle
             repository = Repository.newInstance();
             mySqlModule = new MySqlModule();
             treeviewLocation = new Hashtable();
-            //获取地址列表
-            List<Location> locations = repository.getLocations();
 
-            //初始化id,Pid和TreeViewNode
-            treeviewManager = new TreeViewManager();
-            List<TreeViewNode> treeviewNodes = new List<TreeViewNode>();
-            foreach(Location location in locations)
-            {
-                TreeViewNode treeviewNode = new TreeViewNode();
-                treeviewNode.Id = location.LocationID;
-                treeviewNode.Name = location.LocationName;
-                treeviewNode.Pid = location.LocationPID;
-                treeviewLocation.Add(location.LocationID,location);
-                treeviewNodes.Add(treeviewNode);
-            }
-            treeviewManager.initTreeView(treeviewNodes);
 
-            
+            refreshData();
 
             //locationManager = new LocationManager();
             //locationManager.initLocations(locations);
@@ -68,109 +54,97 @@ namespace CrRepairs.crudmoudle
             ////初始化sql
             //this.Sql = "SELECT * FROM location.company";
 
-            
 
 
-            
-        }
-        
-        public void add(Hashtable hashtable)
-        {
-            
-            //Location locationP = (Location)locationManager.LocationsTB[selectLocation.LocationPID];
 
-            Repository repository = Repository.newInstance();
-            Location location = new Location();
-            location.LocationID = Guid.NewGuid().ToString();
-            location.LocationName = (string)hashtable["location_Name"];
-            if (selectTreeViewNode == null)
-            {
-                //添加根节点
-                location.LocationPID = Guid.Empty.ToString();
-                location.LocationFullName = location.LocationName;
-                location.LocationCode = StringUtil.GetSpellCode(location.LocationName);
-            }
-            else
-            {
-                //得到当前的Location
-                Location locationcurrent = (Location)treeviewLocation[selectTreeViewNode.Id];
-                //得到父的Location
-                Location locationpreant = (Location)treeviewLocation[selectTreeViewNode.Pid];
-                //判断是子节点还是同级
-                if ((string)hashtable["addType"] == "同级")
-                {
-                    location.LocationPID = selectTreeViewNode.Pid;
-                    //添加名称和code
-                    if(locationpreant == null)
-                    {
-                        location.LocationFullName = location.LocationName;
-                    }
-                    else
-                    {
-                        location.LocationFullName = locationpreant.LocationFullName + "-" + location.LocationName;
-                    }
-                    location.LocationCode = StringUtil.GetSpellCode(location.LocationFullName);
-                    location.LocationLevel = locationcurrent.LocationLevel;
-                }
-                else
-                {
-                    location.LocationPID = selectTreeViewNode.Id;
-                    //添加名称和code
-                    location.LocationFullName = locationcurrent.LocationFullName + "-" + location.LocationName;
-                    location.LocationCode = StringUtil.GetSpellCode(location.LocationFullName);
-                    location.LocationLevel = locationcurrent.LocationLevel + 1;
-                }
-            }
-            //查找公司ID 
-            foreach(Company com in companys)
-            {
-                if(com.CompanyName == (string)hashtable["company_ID"])
-                {
-                    location.CompanyID = com.CompanyID;
-                    break;
-                }
-            }
-            
-            
-            
-            //if (locationP != null)
-            //{
-            //    location.LocationCode = locationP.LocationCode + "-" + StringUtil.GetSpellCode(location.LocationName);
-            //}
-            //else
-            //{
-            //    location.LocationCode = StringUtil.GetSpellCode("项目名称-" + location.LocationName);
-            //}
-            //location.LocationLevel = selectLocation.LocationLevel;
-            repository.addLocation(location);
-            //loadData();
+
         }
 
-        public void delete(Hashtable hashtable)
-        {
-            
-            string sqlbase = "DELETE FROM company WHERE CompanyID = '{0}'";
-            string sql = String.Format(sqlbase,hashtable["CompanyID"]);
-            mySqlModule.query(sql);
-        }
-        
-        public void update(Hashtable hashtable)
-        {
+        //public void add(Hashtable hashtable)
+        //{
+
+        //    //Location locationP = (Location)locationManager.LocationsTB[selectLocation.LocationPID];
+
+        //    Repository repository = Repository.newInstance();
+        //    Location location = new Location();
+        //    location.LocationID = Guid.NewGuid().ToString();
+        //    location.LocationName = (string)hashtable["location_Name"];
+        //    if (selectTreeViewNode == null)
+        //    {
+        //        //添加根节点
+        //        location.LocationPID = Guid.Empty.ToString();
+        //        location.LocationFullName = location.LocationName;
+        //        location.LocationCode = StringUtil.GetSpellCode(location.LocationName);
+        //    }
+        //    else
+        //    {
+        //        //得到当前的Location
+        //        Location locationcurrent = (Location)treeviewLocation[selectTreeViewNode.Id];
+        //        //得到父的Location
+        //        Location locationpreant = (Location)treeviewLocation[selectTreeViewNode.Pid];
+        //        //判断是子节点还是同级
+        //        if ((string)hashtable["addType"] == "同级")
+        //        {
+        //            location.LocationPID = selectTreeViewNode.Pid;
+        //            //添加名称和code
+        //            if(locationpreant == null)
+        //            {
+        //                location.LocationFullName = location.LocationName;
+        //            }
+        //            else
+        //            {
+        //                location.LocationFullName = locationpreant.LocationFullName + "-" + location.LocationName;
+        //            }
+        //            location.LocationCode = StringUtil.GetSpellCode(location.LocationFullName);
+        //            location.LocationLevel = locationcurrent.LocationLevel;
+        //        }
+        //        else
+        //        {
+        //            location.LocationPID = selectTreeViewNode.Id;
+        //            //添加名称和code
+        //            location.LocationFullName = locationcurrent.LocationFullName + "-" + location.LocationName;
+        //            location.LocationCode = StringUtil.GetSpellCode(location.LocationFullName);
+        //            location.LocationLevel = locationcurrent.LocationLevel + 1;
+        //        }
+        //    }
+        //    //查找公司ID 
+        //    foreach(Company com in companys)
+        //    {
+        //        if(com.CompanyName == (string)hashtable["company_ID"])
+        //        {
+        //            location.CompanyID = com.CompanyID;
+        //            break;
+        //        }
+        //    }
+
+        //    repository.addLocation(location);
+        //}
+
+        //public void delete(Hashtable hashtable)
+        //{
+
+        //    string sqlbase = "DELETE FROM company WHERE CompanyID = '{0}'";
+        //    string sql = String.Format(sqlbase,hashtable["CompanyID"]);
+        //    mySqlModule.query(sql);
+        //}
+
+        //public void update(Hashtable hashtable)
+        //{
 
 
-            Location updatelocation = (Location)treeviewLocation[selectTreeViewNode.Id];
-            updatelocation.LocationName = (string)hashtable["LocationName"];
+        //    Location updatelocation = (Location)treeviewLocation[selectTreeViewNode.Id];
+        //    updatelocation.LocationName = (string)hashtable["LocationName"];
 
-            //查找当前地址下面的所有Location
-            Repository repository = Repository.newInstance();
-            List<Location> locations = repository.getLocations();
-            //locations.Add(updatelocation);
-            LocationManager locationManager = new LocationManager();
-            locationManager.initLocations(locations);
-            List<Location> updateLocations = locationManager.updateLocationName(updatelocation.LocationID, updatelocation.LocationName);
-            
-            bool result = repository.updateLocations(updateLocations);
-        }
+        //    //查找当前地址下面的所有Location
+        //    Repository repository = Repository.newInstance();
+        //    List<Location> locations = repository.getLocations();
+        //    //locations.Add(updatelocation);
+        //    LocationManager locationManager = new LocationManager();
+        //    locationManager.initLocations(locations);
+        //    List<Location> updateLocations = locationManager.updateLocationName(updatelocation.LocationID, updatelocation.LocationName);
+
+        //    bool result = repository.updateLocations(updateLocations);
+        //}
 
         public Hashtable loadTreeViewData()
         {
@@ -194,80 +168,135 @@ namespace CrRepairs.crudmoudle
         public override void Add(List<CrudItem> crudItems, TreeViewNode treeViewNode)
         {
             Repository repository = Repository.newInstance();
-            Location location = new Location();
-            location.LocationID = Guid.NewGuid().ToString();
-            location.LocationName = (string)hashtable["location_Name"];
-            if (selectTreeViewNode == null)
+
+            //得到当前选中的地址
+            Location selectLocation = treeViewNode != null ? (Location)treeviewLocation[treeViewNode.Id] : null;
+            Location locationpreant = treeViewNode != null ? (Location)treeviewLocation[treeViewNode.Pid] : null;
+            
+            bool isSameNode = false;//是否是添加同级
+            foreach(CrudItem crudItem in crudItems)
             {
-                //添加根节点
-                location.LocationPID = Guid.Empty.ToString();
-                location.LocationFullName = location.LocationName;
-                location.LocationCode = StringUtil.GetSpellCode(location.LocationName);
-            }
-            else
-            {
-                //得到当前的Location
-                Location locationcurrent = (Location)treeviewLocation[selectTreeViewNode.Id];
-                //得到父的Location
-                Location locationpreant = (Location)treeviewLocation[selectTreeViewNode.Pid];
-                //判断是子节点还是同级
-                if ((string)hashtable["addType"] == "同级")
+                if(crudItem.Valuekey == "addType")
                 {
-                    location.LocationPID = selectTreeViewNode.Pid;
-                    //添加名称和code
-                    if (locationpreant == null)
+                    if(crudItem.Value == "同级")
                     {
-                        location.LocationFullName = location.LocationName;
+                        isSameNode = true;
                     }
-                    else
-                    {
-                        location.LocationFullName = locationpreant.LocationFullName + "-" + location.LocationName;
-                    }
-                    location.LocationCode = StringUtil.GetSpellCode(location.LocationFullName);
-                    location.LocationLevel = locationcurrent.LocationLevel;
-                }
-                else
-                {
-                    location.LocationPID = selectTreeViewNode.Id;
-                    //添加名称和code
-                    location.LocationFullName = locationcurrent.LocationFullName + "-" + location.LocationName;
-                    location.LocationCode = StringUtil.GetSpellCode(location.LocationFullName);
-                    location.LocationLevel = locationcurrent.LocationLevel + 1;
-                }
-            }
-            //查找公司ID 
-            foreach (Company com in companys)
-            {
-                if (com.CompanyName == (string)hashtable["company_ID"])
-                {
-                    location.CompanyID = com.CompanyID;
                     break;
                 }
             }
 
+            //提取输入信息
+            Location inputLocation = new Location();
+            foreach (CrudItem crudItem in crudItems)
+            {
+                switch (crudItem.Valuekey)
+                {
+                    case "location_Name":
+                        inputLocation.LocationName = crudItem.Value;
+                        break;
 
+                    case "company_ID":
+                        foreach (Company com in companys)
+                        {
+                            if (com.CompanyName == (string)crudItem.Value)
+                            {
+                                inputLocation.CompanyID = com.CompanyID;
+                                break;
+                            }
+                        }
+                        break;
+                    default:
+                        break;
 
-            //if (locationP != null)
-            //{
-            //    location.LocationCode = locationP.LocationCode + "-" + StringUtil.GetSpellCode(location.LocationName);
-            //}
-            //else
-            //{
-            //    location.LocationCode = StringUtil.GetSpellCode("项目名称-" + location.LocationName);
-            //}
-            //location.LocationLevel = selectLocation.LocationLevel;
-            repository.addLocation(location);
-            //loadData();
+                }
+            }
+
+            //设置添加信息
+            Location addLocation = new Location();
+            addLocation.LocationID = Guid.NewGuid().ToString();
+            addLocation.CompanyID = inputLocation.CompanyID;
+            addLocation.LocationName = inputLocation.LocationName;
+
+            //判断是否是根节点
+            if (selectLocation == null)
+            {
+                //添加根节点
+                addLocation.LocationPID = Guid.Empty.ToString();
+                addLocation.LocationFullName = addLocation.LocationName;
+                addLocation.LocationCode = StringUtil.GetSpellCode(addLocation.LocationName);
+            }
+            else
+            {
+                //判断是子节点还是同级
+                if (isSameNode)
+                {
+                    addLocation.LocationPID = selectLocation.LocationPID;
+                    //添加名称和code
+                    if (locationpreant == null)
+                    {
+                        addLocation.LocationFullName = addLocation.LocationName;
+                    }
+                    else
+                    {
+                        addLocation.LocationFullName = locationpreant.LocationFullName + "-" + addLocation.LocationName;
+                    }
+                    addLocation.LocationCode = StringUtil.GetSpellCode(addLocation.LocationFullName);
+                    addLocation.LocationLevel = selectLocation.LocationLevel;
+                }
+                else
+                {
+                    addLocation.LocationPID = selectLocation.LocationID;
+                    //添加名称和code
+                    addLocation.LocationFullName = selectLocation.LocationFullName + "-" + addLocation.LocationName;
+                    addLocation.LocationCode = StringUtil.GetSpellCode(addLocation.LocationFullName);
+                    addLocation.LocationLevel = selectLocation.LocationLevel + 1;
+                }
+            }
+            repository.addLocation(addLocation);
         }
 
         public override void Update(List<CrudItem> crudItems, TreeViewNode treeViewNode)
         {
-            throw new NotImplementedException();
+            Location updatelocation = (Location)treeviewLocation[treeViewNode.Id];
+
+            //提取输入信息
+            Location inputLocation = new Location();
+            foreach (CrudItem crudItem in crudItems)
+            {
+                switch (crudItem.Valuekey)
+                {
+                    case "location_Name":
+                        updatelocation.LocationName = crudItem.Value;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            //查找当前地址下面的所有Location
+            Repository repository = Repository.newInstance();
+            List<Location> locations = repository.getLocations();
+            //locations.Add(updatelocation);
+            LocationManager locationManager = new LocationManager();
+            locationManager.initLocations(locations);
+            List<Location> updateLocations = locationManager.updateLocationName(updatelocation.LocationID, updatelocation.LocationName);
+
+            bool result = repository.updateLocations(updateLocations);
         }
 
         public override void Delete(TreeViewNode treeViewNode)
         {
-            throw new NotImplementedException();
+            Repository repository = Repository.newInstance();
+            //查看是否有子地址
+            List<Location> locations = repository.getLocationsById(treeViewNode.Id);
+            if (locations.Count > 0)
+            {
+                MessageBox.Show("包含地址数据，无法删除");
+                return;
+            }
+            repository.deleteLocation(treeViewNode.Id);
+            refreshData();
         }
 
         public override List<CrudItem> getAdds()
@@ -283,7 +312,6 @@ namespace CrRepairs.crudmoudle
             add_location_Lable.Value = "";
             add_location_Lable.Combovalue = new string[] { "同级", "子级" };
             add_location_Lable.ValueType = CrudItem.TIP;
-            add_location_Lable.Valuekey = "addType";
             adds.Add(add_location_Lable);
 
             //地址级别
@@ -357,7 +385,7 @@ namespace CrRepairs.crudmoudle
             update_location_Name.Lable = "地址名称:";
             update_location_Name.Value = "";
             update_location_Name.ValueType = CrudItem.TEXTBOX;
-            update_location_Name.Valuekey = "LocationName";
+            update_location_Name.Valuekey = "location_Name";
             updates.Add(update_location_Name);
 
             return updates;
@@ -365,12 +393,38 @@ namespace CrRepairs.crudmoudle
 
         public override Hashtable getTreeViewData()
         {
+            
             return treeviewManager.TreeViewID;
         }
 
         public override Hashtable getTreeViewNode()
         {
+
             return treeviewManager.TreeViewIDAndTreeViewNode;
+        }
+
+        public override void refreshData()
+        {
+
+            
+
+            treeviewLocation.Clear();
+            //获取地址列表
+            List<Location> locations = repository.getLocations();
+
+            //初始化id,Pid和TreeViewNode
+            treeviewManager = new TreeViewManager();
+            List<TreeViewNode> treeviewNodes = new List<TreeViewNode>();
+            foreach (Location location in locations)
+            {
+                TreeViewNode treeviewNode = new TreeViewNode();
+                treeviewNode.Id = location.LocationID;
+                treeviewNode.Name = location.LocationName;
+                treeviewNode.Pid = location.LocationPID;
+                treeviewLocation.Add(location.LocationID, location);
+                treeviewNodes.Add(treeviewNode);
+            }
+            treeviewManager.initTreeView(treeviewNodes);
         }
     }
 }
