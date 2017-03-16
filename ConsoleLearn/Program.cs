@@ -25,7 +25,7 @@ namespace ConsoleLearn
             //expression();
             //StringLearn();
             ////flowControl();
-            //arrayAndCollections();
+            arrayAndCollections();
             //attributeMethod();
             //structure();
 
@@ -92,11 +92,21 @@ namespace ConsoleLearn
             //布尔类型
             bool _bool = false;
 
+            //货币类型，用于货币和财务128位
+            decimal de = 1.02M;
+
+            //Unicode字符16位
+            char uchar = 'A';
+
             //引用类型
             Program1 program1 = new Program1();
             Program1 program2 = program1;
             program1.Age = 10;
             Console.WriteLine("program1.value:{0},program2.value:{1}",program1.Age, program2.Age);
+
+            //装箱和拆箱操作
+            object zx = 11;//装箱
+            int cx = (int)zx;//拆箱
 
             //枚举类型
             Sex sex = Sex.FEMALE;
@@ -161,6 +171,7 @@ namespace ConsoleLearn
 
             //常量
             const int AGEMAX = 150; //年龄的最大值为150
+
         }
 
         /// <summary>
@@ -821,6 +832,51 @@ namespace ConsoleLearn
             //判断元素是否在集合中
             Console.WriteLine("数组是否包含{0}" + list3.Contains(1), 1);
 
+            //Dictionary的使用,必须指定泛型
+            Dictionary<string,string> dictionary = new Dictionary<string, string>();
+            //添加元素
+            dictionary.Add("txt", "notepad.exe");
+            dictionary.Add("bmp", "paint.exe");
+            dictionary.Add("dib", "paint.exe");
+            dictionary.Add("rtf", "wordpad.exe");
+            //取值
+            Console.WriteLine("For key = \"rtf\", value = {0}.", dictionary["rtf"]);
+            //更改值
+            dictionary["rtf"] = "winword.exe";
+            Console.WriteLine("For key = \"rtf\", value = {0}.", dictionary["rtf"]);
+            //遍历key
+            foreach (string key in dictionary.Keys)
+            {
+                Console.WriteLine("Key = {0}", key);
+            }
+            //遍历value
+            foreach (string value in dictionary.Values)
+            {
+                Console.WriteLine("value = {0}", value);
+            }
+
+            //遍历value, Second Method
+            Dictionary<string, string>.ValueCollection valueColl = dictionary.Values;
+            foreach (string s in valueColl)
+            {
+                Console.WriteLine("Second Method, Value = {0}", s);
+            }
+
+            //遍历字典
+            foreach (KeyValuePair<string, string> kvp in dictionary)
+            {
+                Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+            }
+
+            //添加存在的元素
+            try
+            {
+                dictionary.Add("txt", "winword.exe");
+            }
+            catch (ArgumentException)
+            {
+                Console.WriteLine("An element with Key = \"txt\" already exists.");
+            }
 
             //Hashtable哈希表
             Hashtable hashtable = new Hashtable();
@@ -839,6 +895,7 @@ namespace ConsoleLearn
             Console.WriteLine("哈希表values列表:{0}" + hashtable.Values);
             Console.WriteLine("哈希表线程同步对像:{0}" + hashtable.SyncRoot);
 
+            //TODO: 这段程序是测试用的，到时记得删除
             //删除
             hashtable.Clear();
             hashtable.Remove("name");
