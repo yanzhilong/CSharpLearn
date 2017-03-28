@@ -1,0 +1,68 @@
+﻿@model IEnumerable<MVC.Models.User查看所有用户>
+
+@{
+    ViewBag.Title = "Details";
+
+}
+
+<h2>用户列表页</h2>
+
+<table>
+    <tr>
+        @*<th>@Html.DisplayFor(model => model.)</th>*@
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NickName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.School)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Wife)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WifeBirthday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WifeEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Father)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FatherBirthday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FatherEmail)
+            </td>
+
+            <td>
+
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

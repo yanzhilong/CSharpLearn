@@ -1,0 +1,50 @@
+﻿@model MVC.Models.User复杂模型绑定
+
+@{
+    ViewBag.Title = "创建用户";
+}
+
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    
+    <hr />
+        <p>
+            @Html.LabelFor(model => model.ID)
+            @Html.Editor("user1.ID")
+
+            <!-- 这里显示某个字段无法验证通过的时候，当前字段设置的验证消息 -->
+            @Html.ValidationMessageFor(model => model.ID)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.Name)
+            @Html.Editor("user1.Name")
+
+            <!-- 这里显示某个字段无法验证通过的时候，当前字段设置的验证消息 -->
+            @Html.ValidationMessageFor(model => model.Name)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.NickName)
+            @Html.Editor("user1.NickName")
+        </p>
+
+    <hr />
+    <p>
+        @Html.LabelFor(model => model.Father)
+        @Html.Editor("user2.Father")
+
+        </p>
+        <p>
+            @Html.LabelFor(model => model.Wife)
+            @Html.Editor("user2.Wife")
+
+        </p>
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+
+}
+
+<hr />

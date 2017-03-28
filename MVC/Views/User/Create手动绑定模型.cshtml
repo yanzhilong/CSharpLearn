@@ -1,0 +1,84 @@
+﻿@model MVC.Models.User手动绑定模型
+
+@{
+    ViewBag.Title = "创建用户";
+}
+
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <!-- 显示验证错误时候的提示的信息 -->
+    @Html.ValidationSummary(true, "有必填字段 未填写", new { @class = "text-danger" })
+
+    <p>
+            @Html.LabelFor(model => model.ID)
+            @Html.EditorFor(model => model.ID)
+
+            <!-- 这里显示某个字段无法验证通过的时候，当前字段设置的验证消息 -->
+            @Html.ValidationMessageFor(model => model.ID)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.Name)
+            @Html.EditorFor(model => model.Name)
+
+            <!-- 这里显示某个字段无法验证通过的时候，当前字段设置的验证消息 -->
+            @Html.ValidationMessageFor(model => model.Name)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.NickName)
+            @Html.EditorFor(model => model.NickName)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.Age)
+            @Html.EditorFor(model => model.Age)
+        </p>
+
+        <p>
+            @Html.LabelFor(model => model.Birthday)
+            @Html.EditorFor(model => model.Birthday)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.Email)
+            @Html.EditorFor(model => model.Email)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.School)
+            @Html.EditorFor(model => model.School)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.Wife)
+            @Html.EditorFor(model => model.Wife)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.WifeBirthday)
+            @Html.EditorFor(model => model.WifeBirthday)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.WifeEmail)
+            @Html.EditorFor(model => model.WifeEmail)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.Father)
+            @Html.EditorFor(model => model.Father)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.FatherBirthday)
+            @Html.EditorFor(model => model.FatherBirthday)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.FatherEmail)
+            @Html.EditorFor(model => model.FatherEmail)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.WifeEmail)
+            @Html.EditorFor(model => model.WifeEmail)
+        </p>
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+
+}
+
+<hr />

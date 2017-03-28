@@ -1,0 +1,22 @@
+﻿@model MVC.Models.User原始方法
+
+@{
+    ViewBag.Title = "创建用户";
+}
+
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <p>
+        @Html.LabelFor(model => model.Name)
+        @Html.Editor("UserName")
+    </p>
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+
+}
+
+<hr />

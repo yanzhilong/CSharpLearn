@@ -1,0 +1,71 @@
+﻿@model MVC.Models.User指定绑定字段
+
+@{
+    ViewBag.Title = "创建用户";
+}
+
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <p>本页面只绑定id和name,其它提交的字段不会被服务器接收</p>
+
+        <p>
+            @Html.LabelFor(model => model.ID)
+            @Html.EditorFor(model => model.ID)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.Name)
+            @Html.EditorFor(model => model.Name)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.NickName)
+            @Html.EditorFor(model => model.NickName)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.Age)
+            @Html.EditorFor(model => model.Age)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.Birthday)
+            @Html.EditorFor(model => model.Birthday)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.Email)
+            @Html.EditorFor(model => model.Email)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.School)
+            @Html.EditorFor(model => model.School)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.Wife)
+            @Html.EditorFor(model => model.Wife)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.WifeBirthday)
+            @Html.EditorFor(model => model.WifeBirthday)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.WifeEmail)
+            @Html.EditorFor(model => model.WifeEmail)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.Father)
+            @Html.EditorFor(model => model.Father)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.FatherBirthday)
+            @Html.EditorFor(model => model.FatherBirthday)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.FatherEmail)
+            @Html.EditorFor(model => model.FatherEmail)
+        </p>
+
+   <p>
+        <input type="submit" value="Create" />
+    </p>
+
+}
